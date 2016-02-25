@@ -10,7 +10,7 @@
 
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/bootstrap.css" />
-        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>	
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
     <div id="wrap">
@@ -29,56 +29,49 @@
                   <span class="icon-bar"></span>
                 </button>
               </div>
-
-              <!-- AUTRES ITEMS -->
-              <div class="navbar-collapse collapse" id="navbar-main">
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="inscription.php" target="_blank">Inscription</a></li>
-                  <li><a href="#" target="_blank" id="bouton-connexion">Connexion</a></li>
-                </ul>
-              </div>
             </div>
           </div>
-        
+
       <!-- FORMULAIRE -->
-      <div id="formulaire-inscription">  
+      <div id="formulaire-inscription">
     		<div class="panel panel-primary">
-    	  		<div class="panel-heading centrer"><h2>Inscription</h2></div>
-    	  		<div class="panel-body">
-            <p id="error-zone"></p>
-    				<form class="form-horizontal">
-    	  				<fieldset>
-    						  <div class="form-group">
-                    <div class="input-formulaire-inscription">
-    		    				  <input class="form-control" id="pseudo_user" placeholder="Pseudo" type="text">
-                    </div>
-    						  </div>
-    						  <div class="form-group">
-                    <div class="input-formulaire-inscription">
-    		    				  <input class="form-control" id="email_user" placeholder="Email" type="text">
-                    </div>
-    		  				</div>
-    						  <div class="form-group">
-                    <div class="input-formulaire-inscription">
-    		    				  <input class="form-control" id="mdp_user" placeholder="Mot de passe" type="password">
-                    </div>
-    		  				</div>
-    						  <div class="form-group">
-                    <div class="input-formulaire-inscription">
-    		    				  <input class="form-control" id="mdp_user_repeat" placeholder="Retapez le mot de passe" type="password">
-                    </div>
-    						  </div>
-    						  <div class="form-group">
-    							 <div class="wrapper-button centrer">
-    		    					<button type="submit" class="btn btn-primary">Valider</button>
-    		    					<button type="reset" class="btn btn-default">Annuler</button>
-    		    			 </div>
-    		  				</div>
-    	  				</fieldset>
-    				</form>
-    	  		</div>
-          </div>
-  		</div>
+    	  	<div class="panel-heading centrer">
+						<h2>Inscription</h2></div>
+    	  			<div class="panel-body">
+            		<p id="error-zone"></p>
+		    				<form class="form-horizontal">
+		    	  				<fieldset>
+		    						  <div class="form-group">
+		                    <div class="input-formulaire-inscription">
+		    		    				  <input class="form-control" id="pseudo_user" placeholder="Pseudo" type="text">
+		                    </div>
+		    						  </div>
+		    						  <div class="form-group">
+		                    <div class="input-formulaire-inscription">
+		    		    				  <input class="form-control" id="email_user" placeholder="Email" type="text">
+		                    </div>
+		    		  				</div>
+		    						  <div class="form-group">
+		                    <div class="input-formulaire-inscription">
+		    		    				  <input class="form-control" id="mdp_user" placeholder="Mot de passe" type="password">
+		                    </div>
+		    		  				</div>
+		    						  <div class="form-group">
+		                    <div class="input-formulaire-inscription">
+		    		    				  <input class="form-control" id="mdp_user_repeat" placeholder="Retapez le mot de passe" type="password">
+		                    </div>
+		    						  </div>
+		    						  <div class="form-group">
+		    							 <div class="wrapper-button centrer">
+		    		    					<button type="submit" class="btn btn-primary">Valider</button>
+		    		    					<button type="reset" class="btn btn-default">Annuler</button>
+		    		    			 </div>
+		    		  				</div>
+		    	  				</fieldset>
+		    				</form>
+    	  			</div>
+          	</div>
+  			</div>
 
   		<!-- PIED DE PAGE -->
       <footer>
@@ -94,4 +87,3 @@
     </div>
 	</body>
 </html>
-

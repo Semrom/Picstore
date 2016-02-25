@@ -56,7 +56,7 @@
             <!-- AUTRES ITEMS -->
             <div class="navbar-collapse collapse" id="navbar-main">
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="inscription.php" target="_blank">Inscription</a></li>
+                <li><a href="inscription.php">Inscription</a></li>
                 <li><a href="#" target="_blank" id="bouton-connexion">Connexion</a></li>
               </ul>
             </div>
