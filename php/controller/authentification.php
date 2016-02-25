@@ -1,103 +1,112 @@
 <?php
 	session_start();
 
+	// En-tête pour le retour JSON
 	header('Cache-Control: no-cache, must-revalidate');
 	header('Expires: Mon, 26 Jul 1997 05:00:00 GMT');
 	header('Content-type: application/json');
 
+	// Inclusion des modèles (pour la BD)
 	require_once "../model/Log.php";
 	require_once "../model/User.php";
 
+	// Objet "reponse" pour JSON
 	$reponse = new stdClass();
 	$reponse->success = false;
 	$reponse->message = "";
 
+	// Si le formulaire d'inscription est soumis
 	if (isset($_POST['form']) && $_POST['form'] == "signup")
 	{
-		if (isset($_POST['nom']) && !empty($_POST['nom']) &&
-			isset($_POST['prenom']) && !empty($_POST['prenom']) &&
-			isset($_POST['email']) && !empty($_POST['email']) &&
-			isset($_POST['password']) && !empty($_POST['password']) &&
-			isset($_POST['password_confirm']) && !empty($_POST['password_confirm']))
+		// Si toutes les données existent et ne sont pas vides
+		if (isset($_POST['pseudo_user']) && !empty($_POST['pseudo_user']) &&
+			isset($_POST['email_user']) && !empty($_POST['email_user']) &&
+			isset($_POST['mdp_user']) && !empty($_POST['mdp_user']) &&
+			isset($_POST['mdp_user_repeat']) && !empty($_POST['mdp_user_repeat']) &&
+			isset($_POST['avatar_user']) && !empty($_POST['password_confirm']))
 		{
-			$nom = htmlspecialchars($_POST['nom']);
-			$prenom = htmlspecialchars($_POST['prenom']);
-			$destinataire = htmlspecialchars($_POST['email']);
-			$password = sha1(htmlspecialchars($_POST['password']));
-			$password_confirm = sha1(htmlspecialchars($_POST['password_confirm']));
+			// Protection des données
+			$pseudo = htmlspecialchars($_POST['pseudo_user']);
+			$email = htmlspecialchars($_POST['email_user']);
+			$motDePasse = sha1(htmlspecialchars($_POST['mdp_user']));
+			$motDePasseReapeat = sha1(htmlspecialchars($_POST['mdp_user_repeat']));
+			$avatar = $_POST['avatar_user'];
 
-			if ($password == $password_confirm)
+			// Si les deux mots de passe sont identiques
+			if ($motDePasse == $motDePasseReapeat)
 			{
-				if (!is_numeric($nom) || !is_numeric($prenom))
+				// Si le format de l'e-mail est correct
+				if (preg_match('/^[-+.\w]{1,64}@[-.\w]{1,64}\.[-.\w]{2,6}$/i', $email))
 				{
-					if (preg_match('/^[-+.\w]{1,64}@[-.\w]{1,64}\.[-.\w]{2,6}$/i', $destinataire))
+					// Connexion à la base
+					try
 					{
-						try
+						$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', '');
+					}
+					catch (Exception $e)
+					{
+					        die('Erreur : ' . $e->getMessage());
+					}
+
+					// Nouvel objet "Log"
+					$log = new Log($bdd);
+					// Vérification de l'existance du mail
+					$mailExist = $log->mailExist($email);
+
+					// Si le mail n'existe pas, OK
+					if (!$mailExist)
+					{
+						// Inscription
+						$isSuccess = $log->inscription($pseudo, $email, $motDePasse, $avatar);
+
+						if ($isSuccess)
 						{
-							$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u320567403_base;charset=utf8', 'u320567403_user', 'ingodwetrust1776');
-						}
-						catch (Exception $e)
-						{
-						        die('Erreur : ' . $e->getMessage());
-						}
+							/***** EMAIL DE CONFIRMATION *****/
 
-						$log = new Log($bdd);
-						$mailExist = $log->mailExist($destinataire);
+							// Clé d'activation propre à l'utilisateur pour l'activation
+							$cle = md5(microtime(TRUE)*100000);
 
-						if (!$mailExist)
-						{
-							$isSuccess = $log->inscription($nom, $prenom, $destinataire, $password);
+							// Insertion de la clé en base
+							$stmt = $bdd->prepare("UPDATE utilisateur SET cle=:cle WHERE email_user=:email");
+							$stmt->execute(array('cle' => $cle, 'email' => $email));
 
-							if ($isSuccess)
-							{
-								/***** EMAIL DE CONFIRMATION *****/
+							// Corps du mail
+							$sujet = "Activer votre compte" ;
+							$nom = "Picstore";
+							$email = "contact@picstore.16mb.com";
 
-								$cle = md5(microtime(TRUE)*100000);
+							$entete = "From: " . $nom . " <" . $email . ">\n";
 
-								$stmt = $bdd->prepare("UPDATE membres SET cle=:cle WHERE email=:email");
-								$stmt->execute(array('cle' => $cle, 'email' => $destinataire));
+							$message = 'Bienvenue sur Picstore !' . "\n\n";
 
-								$sujet = "Activer votre compte" ;
-								$nom = "Semrom-Projects";
-								$email = "contact@semrom-projects.com";
+							$message .= 'Afin d\'activer votre compte, veuillez cliquer sur le lien ci-dessous :' . "\n\n";
 
-								$entete = "From: " . $nom . " <" . $email . ">\n";
+							$message .= 'http://picstore.16mb.com/php/controller/activation.php?mail=' . urlencode($email) . '&cle=' . urlencode($cle) . '' . "\n\n";
 
-								$message = 'Bienvenue sur Semrom Projects,' . "\n\n";
+							$message .= '---------------' . "\n" . 'Ceci est un mail automatique, merci de ne pas y répondre.';
 
-								$message .= 'Afin d\'activer votre compte, veuillez cliquer sur le lien ci-dessous :' . "\n\n";
+							mail($email, $sujet, $message, $entete);
 
-								$message .= 'http://semrom-projects.com/php/controller/activation.php?mail=' . urlencode($destinataire) . '&cle=' . urlencode($cle) . '' . "\n\n";
+							unset($_POST);
+							$reponse->success = true;
+							$reponse->message = "Un mail contenant un lien de validation a été envoyé à votre adresse pour activer votre compte. <br />
+												 Si vous ne le trouvez pas, vérifiez votre dossier 'spams' ou 'courriers indésirables'.<br />";
 
-								$message .= '---------------' . "\n" . 'Ceci est un mail automatique, merci de ne pas y répondre.';
-
-								mail($destinataire, $sujet, $message, $entete);
-
-								unset($_POST);
-								$reponse->success = true;
-								$reponse->message = "Un mail contenant un lien de validation a été envoyé à votre adresse pour activer votre compte. <br />
-													 Si vous ne le trouvez pas, vérifiez votre dossier 'spams' ou 'courriers indésirables'.<br />";
-
-								$bdd = null;
-							}
-							else
-							{
-								$reponse->message = "Erreur : l'inscription a échoué. Veuillez réessayer.";
-							}
+							$bdd = null;
 						}
 						else
 						{
-							$reponse->message = "Cette adresse mail existe déjà, avez-vous un compte ?";
+							$reponse->message = "Erreur : l'inscription a échoué. Veuillez réessayer.";
 						}
 					}
 					else
 					{
-						$reponse->message = "Le format de l'adresse e-mail est incorrect.";
+						$reponse->message = "Cette adresse mail existe déjà, avez-vous un compte ?";
 					}
 				}
 				else
 				{
-					$reponse->message = "Veuillez ne pas mettre de valeurs numériques dans les champs 'Nom' et 'Prénom'.";
+					$reponse->message = "Le format de l'adresse e-mail est incorrect.";
 				}
 			}
 			else
@@ -110,33 +119,42 @@
 			$reponse->message = "Le formulaire est incomplet.";
 		}
 	}
+	// Si le formulaire de connexion est soumis
 	else
 	{
-		if (isset($_POST['email']) && !empty($_POST['email']) &&
-			isset($_POST['password']) && !empty($_POST['password']))
+		// Si toutes les données existent et ne sont pas vides
+		if (isset($_POST['pseudo_user']) && !empty($_POST['pseudo_user']) &&
+			isset($_POST['mdp_user']) && !empty($_POST['mdp_user']))
 		{
-			$email = htmlspecialchars($_POST['email']);
-			$password = sha1(htmlspecialchars($_POST['password']));
+			// Protection des données
+			$pseudo = htmlspecialchars($_POST['pseudo_user']);
+			$mdp = sha1(htmlspecialchars($_POST['mdp_user']));
 
+			// Connexion à la base
 			try
 			{
-				$bdd = new PDO('mysql:host=mysql.hostinger.fr;dbname=u320567403_base;charset=utf8', 'u320567403_user', 'ingodwetrust1776');
+				$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', '');
 			}
 			catch (Exception $e)
 			{
 			        die('Erreur : ' . $e->getMessage());
 			}
 
+			// Nouvel objet "Log"
 			$log = new Log($bdd);
-			$isSuccess = $log->connexion($email, $password);
+			$isSuccess = $log->connexion($pesudo, $password);
 
+			// Si la connexion a réussi
 			if ($isSuccess)
 			{
+				// Nouvel objet "User"
 				$user = new User($bdd);
+				// Récupération des informations de l'utilisateur
 				$userInfos = $user->getInfos($email);
+				// Si le compte de l'utilisateur est activé
 				if ($userInfos['actif'] == 1)
 				{
-					$log->addConnect($email);
+					// Création de la session contenant toutes les données de l'utilisateur
 					$_SESSION['user'] = $userInfos;
 					$bdd = null;
 					$reponse->success = true;
