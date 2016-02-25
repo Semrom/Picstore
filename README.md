@@ -5,7 +5,7 @@ Le projet est conçu dans le cadre des cours de développement web. L'objectif e
 
 Les langages actuellement utilisés sont : HTML 5 / CSS 3 / PHP / MySQL / JavaScript / JQuery.
 
-Notre site, Picstore, concerne un partage et hébergement d'images (animés ou non) entre utilisateurs. 
+Notre site, Picstore, concerne un partage et hébergement d'images (animées ou non) entre utilisateurs. 
 
 Lien à venir prochainement.
 
