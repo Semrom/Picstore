@@ -120,11 +120,14 @@ footer {
 
 /* album user page */
 
-.album-container {
+#album-container {
     margin-top: 20px;
     margin-bottom: 20px;
     padding: 2%;
-    background-color: rgb(48, 48, 48);
+    /*background-color: rgb(48, 48, 48);*/
+    background:transparent url(../slider-images/images/black.png) repeat top left;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.9);
+    border-radius:10px;
 }
 
 .dummy {
