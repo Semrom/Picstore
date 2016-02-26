@@ -1,39 +1,151 @@
 /*** UTILITAIRES ***/
+
 .centrer {
-  text-align: center;
+    text-align: center;
 }
 
 
 /*** PAGE ACCUEIL ***/
-#sous-titre-bloc {
-  text-align: center;
 
+#sous-titre-bloc {
+    text-align: center;
 }
 
 #sous-titre-text {
-  font-size: 25px;
-  margin-top: 5%;
-  margin-bottom: 0%;
+    font-size: 25px;
+    margin-top: 5%;
+    margin-bottom: 0%;
 }
 
 #formulaire-recherche {
-  margin-bottom: 8%;
+    margin-bottom: 8%;
 }
 
 #recherche-accueil {
-  background-color: rgb(34, 34, 34);
-  border: 1px solid white;
-  border-radius: 20px;
-  color: white;
-  font-size: 17px;
-  padding: 1%;
-  width: 70%;
+    background-color: rgb(34, 34, 34);
+    border: 1px solid white;
+    border-radius: 20px;
+    color: white;
+    font-size: 17px;
+    padding: 1%;
+    width: 70%;
 }
 
+
 /*** MISE EN PAGE ***/
+
+body {
+    padding-top: 60px
+}
+
 footer {
-  background-color: rgb(48, 48, 48);
-  font-size: 15px;
-  padding: 2%;
-  text-align: center;
+    background-color: rgb(48, 48, 48);
+    font-size: 15px;
+    padding: 2%;
+    text-align: center;
+}
+
+.dropdown-menu {
+    padding: 15px;
+    min-width: 200px;
+}
+
+
+/* avatar */
+
+#avatar-container {
+    margin-top:20px;
+    width: 22%;
+}
+
+@media (max-width: 754px) {
+    #avatar-container {
+        width: 30%;
+    }
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.ratio {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.img-responsive {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+#nb_like_user{
+    text-align:center;
+}
+
+
+/* album user page */
+
+.album-container {
+    margin-top:20px;
+    margin-bottom:20px;
+    padding: 2%;
+    background-color: rgb(48, 48, 48);
+}
+
+.dummy {
+    margin-top: 100%;
+}
+
+.in {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 5px;
+}
+.in:hover{
+    border-style:solid;
+    border-color:#AAAAAA;
+    border-width:2px;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.gray {
+    background-color: gray;
+}
+
+.magenta {
+    background-color: magenta;
+}
+
+.add{
+  display: flex;
+  align-items: center;
+  justify-content:center;
+}
+
+span.glyphicon-plus {
+    font-size: 5em;
 }
