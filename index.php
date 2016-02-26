@@ -9,10 +9,10 @@
     <meta name="description" content="Picstore : Hébergez et partagez vos images !" />
     <meta name="keywords" content="hébrgement, héberger, images, partager, sockage, stocker, photos, media, share, sharing, host, hosting, sharing, pic, pics, picture, pictures, network, communauty" />
 
-
     <link rel="stylesheet" href="css/bootstrap.css" />
     <link rel="stylesheet" href="css/style.css" />
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
 
     <link rel="stylesheet" type="text/css" href="slider-images/css/demo.css" />
     <link rel="stylesheet" type="text/css" href="slider-images/css/slider.css" />
@@ -35,6 +35,7 @@
             </div>
         </div>
     </script>
+
 </head>
 
 <body>
@@ -63,8 +64,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown" id="menu-connexion">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="bouton-connexion" role="button">
-				Connexion
-			</a>
+	            			Connexion
+			            </a>
                         <div class="dropdown-menu dropdown-menu-left " style="padding:15px;min-width:200px">
                             <form class="form" name="formulaire-connexion" action="connexion.php" method="POST">
                                 <div class="form-group">

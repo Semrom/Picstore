@@ -1,3 +1,14 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    position: relative;
+    padding-top: 60px
+}
+
+
 /*** UTILITAIRES ***/
 
 .centrer {
@@ -32,17 +43,35 @@
 }
 
 
-/*** MISE EN PAGE ***/
+/*** PAGE INSCRIPTION ***/
 
-body {
-    padding-top: 60px
+#formulaire-inscription {
+    width: 50%;
+    margin: auto;
 }
+
+.input-formulaire-inscription {
+    width: 50%;
+    margin: auto;
+}
+
+#wrap {
+    min-height: 100%;
+    position: relative;
+}
+
+
+/*** MISE EN PAGE ***/
 
 footer {
     background-color: rgb(48, 48, 48);
     font-size: 15px;
     padding: 2%;
     text-align: center;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .dropdown-menu {
@@ -54,7 +83,7 @@ footer {
 /* avatar */
 
 #avatar-container {
-    margin-top:20px;
+    margin-top: 20px;
     width: 22%;
 }
 
@@ -84,16 +113,16 @@ footer {
     max-width: 100%;
 }
 
-#nb_like_user{
-    text-align:center;
+#nb_like_user {
+    text-align: center;
 }
 
 
 /* album user page */
 
 .album-container {
-    margin-top:20px;
-    margin-bottom:20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 2%;
     background-color: rgb(48, 48, 48);
 }
@@ -110,10 +139,11 @@ footer {
     right: 0;
     margin: 5px;
 }
-.in:hover{
-    border-style:solid;
-    border-color:#AAAAAA;
-    border-width:2px;
+
+.in:hover {
+    border-style: solid;
+    border-color: #AAAAAA;
+    border-width: 2px;
 }
 
 .red {
@@ -140,10 +170,10 @@ footer {
     background-color: magenta;
 }
 
-.add{
-  display: flex;
-  align-items: center;
-  justify-content:center;
+.add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 span.glyphicon-plus {
