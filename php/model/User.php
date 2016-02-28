@@ -17,7 +17,7 @@ class User {
 			$this->bdd = $bdd;
 		}
 
-    // Récupère les informations d'un l'utilisateur par son email
+    	// Récupère les informations d'un l'utilisateur par son email
 		public function getInfos($email) {
 			$req_info = $this->bdd->prepare('SELECT peudo_user, date_inscription_user FROM utilisateur WHERE email_user=:email');
 			$req_info->execute(array('email' => $email));
@@ -34,7 +34,7 @@ class User {
 			return $donnees;
 		}
 
-    // Change le mot de passe d'un utilisateur
+    	// Change le mot de passe d'un utilisateur
 		public function changePassword($email, $actual_password, $new_password, $new_password_confirm) {
 			$req_mdp = $this->bdd->prepare('SELECT mdp_user FROM utilisateur WHERE email_user=:email');
 			$req_mdp->execute(array('email' => $email));

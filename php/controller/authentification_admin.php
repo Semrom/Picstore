@@ -17,7 +17,7 @@
 		$email = htmlspecialchars($_POST['email']);
 		$motDePasse = sha1(htmlspecialchars($_POST['pass']));
 
-    try
+    	try
 		{
 			$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', '');
 		}

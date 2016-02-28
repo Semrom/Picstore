@@ -1,19 +1,4 @@
-html {
-    height: 100%;
-}
-
-body {
-    height: 100%;
-    position: relative;
-    padding-top: 60px
-}
-
-
-/*** UTILITAIRES ***/
-
-.centrer {
-    text-align: center;
-}
+/*** CORPS DE PAGE ***/html, body {	height: 100%;}/*** MODULES ***/footer {    background-color: rgb(48, 48, 48);    font-size: 15px;    padding: 1%;    text-align: center;    height: 60px;}.dropdown-menu {    padding: 15px;    min-width: 200px;}#wrap {    min-height: 100%;    height: auto;    margin: 0 auto -60px;    padding: 0 0 60px;}
 
 
 /*** PAGE ACCUEIL ***/
@@ -55,32 +40,8 @@ body {
     margin: auto;
 }
 
-#wrap {
-    min-height: 100%;
-    position: relative;
-}
 
-
-/*** MISE EN PAGE ***/
-
-footer {
-    background-color: rgb(48, 48, 48);
-    font-size: 15px;
-    padding: 2%;
-    text-align: center;
-    height: 100px;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-}
-
-.dropdown-menu {
-    padding: 15px;
-    min-width: 200px;
-}
-
-
-/* avatar */
+/*** AVATAR ***/
 
 #avatar-container {
     margin-top: 20px;
@@ -118,7 +79,7 @@ footer {
 }
 
 
-/* album user page */
+/*** GALLERIE PAGE UTILISATEUR ***/
 
 #album-container {
     margin-top: 20px;
@@ -181,4 +142,4 @@ footer {
 
 span.glyphicon-plus {
     font-size: 5em;
-}
+}/*** UTILITAIRES ***/.centrer {    text-align: center;}

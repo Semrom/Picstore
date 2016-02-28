@@ -1,4 +1,4 @@
-<?php
+<?php/*** @author Thomas Allam** @file Image.php** @date 25/02/2016** @brief Classe en charge des informations et des commentaires d'une image.*/
 	class Image {
 
 		public $bdd;
@@ -15,7 +15,7 @@
 		}
 
 		public function getComImage($id_img) {
-			$req_com = $this->bdd->prepare('SELECT * from commentaire, image WHERE commentaire.id_img = image.id_img');
+			$req_com = $this->bdd->prepare('SELECT * FROM commentaire, image WHERE commentaire.id_img = image.id_img');
 			$donnees = $req_com->fetch();
 			$req_com->closeCursor();
 			return $donnees;

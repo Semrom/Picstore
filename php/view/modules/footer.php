@@ -1,0 +1,1 @@
+<footer>    <div class="container">        <div class="col-lg-3">            Picstore ©2016        </div>        <div class="col-lg-3 col-lg-offset-6">            <a href="#">Contact</a>        </div>    </div></footer>

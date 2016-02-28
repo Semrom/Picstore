@@ -1,4 +1,4 @@
-<?php
+<?php/*** @author Thomas Allam** @file Gallerie.php** @date 25/02/2016** @brief Classe chargé de récupérer une gallerie et ses images.*/
 	class Gallerie {
 		
 		public $bdd;
