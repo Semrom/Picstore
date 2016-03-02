@@ -5,9 +5,7 @@
 	    <meta charset="UTF-8" />
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	    <meta name="description" content="Picstore : Hébergez et partagez vos images !" />
-	    <meta name="keywords" content="hébrgement, héberger, images, partager, sockage, stocker, photos, media, share, sharing, host, hosting, sharing, pic, pics, picture, pictures, network, communauty" />
-	
+	    
 	    <link rel="stylesheet" href="css/bootstrap.css" />
 	    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 	

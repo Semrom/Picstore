@@ -15,7 +15,7 @@
 
             <!-- ITEM PRINCIPAL -->
             <div class="navbar-header">
-              <a href="./" class="navbar-brand">Picstore</a>
+              <a href="../" class="navbar-brand">Picstore</a>
 
               <!-- BOUTON MENU FORMAT MOBILE -->
               <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
