@@ -23,8 +23,8 @@
     padding: 1%;
     width: 70%;
 }
-
-
+/*** FORMULAIRE CONNEXION ***/#error-zone-connect {	display: none;	font-size: 16px;	margin-left: auto;	margin-right: auto;}
+/*** PAGE INSCRIPTION ***/#form-signup {	border: 5px #375a7f solid;	border-radius: 20px;	padding: 2%}#ok-zone {	display: none;	font-size: 20px;}#error-zone {	display: none;	font-size: 18px;	margin-left: auto;	margin-right: auto;}
 /*** AVATAR ***/
 
 #avatar-container {
