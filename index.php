@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php	session_start();?><!DOCTYPE html>
 <html>
 	<head>
 	    <title>Picstore</title>
@@ -173,7 +173,7 @@
 	    <!-- PIED DE PAGE -->
 	    <?php include_once('php/view/modules/footer.php'); ?>
 	
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>	    <script type="text/javascript" src="js/authentification.js"></script>
 	    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 	    <script type="text/javascript" src="slider-images/js/jquery.tmpl.min.js"></script>
 	    <script type="text/javascript" src="slider-images/js/jquery.easing.1.3.js"></script>

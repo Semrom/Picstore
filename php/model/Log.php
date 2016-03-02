@@ -18,8 +18,8 @@
 
 		// Récupère les informations pour la connexion selon le pseudo et le mot de passe de l'utilisateur
 		public function connexion($pseudo, $password) {
-			$req_connect = $this->bdd->prepare('SELECT id_user FROM utilisateur WHERE peudo_user=:pseudo AND mdp_user=:motDePasse');
-			$req_connect->execute(array('email' => $pseudo, 'motDePasse' => $password));
+			$req_connect = $this->bdd->prepare('SELECT id_user FROM utilisateur WHERE pseudo_user=:pseudo AND mdp_user=:motDePasse');
+			$req_connect->execute(array('pseudo' => $pseudo, 'motDePasse' => $password));
 			$exist = $req_connect->fetch();
       		$req_connect->closeCursor();
 
@@ -52,8 +52,8 @@
 
 		// Insère les données dans la base lors de l'inscription d'un utilisateur
     	public function inscription($pseudo, $email, $password, $avatar) {
-      	$req_insert = $this->bdd->prepare('INSERT INTO utilisateur(pseudo_user, email_user, mdp_user, avatar_user, date_inscription_user, actif) VALUES(:pseudo, :email, :mdp, :avatar, NOW(), 0)');
-			$req_insert->execute(array('pseudo' => $pseudo, 'email' => $email, 'mdp' => $password, 'avatar' => $avatar));
+      	$req_insert = $this->bdd->prepare('INSERT INTO utilisateur(pseudo_user, email_user, mdp_user, date_inscription_user, actif) VALUES(:pseudo, :email, :mdp, NOW(), 0)');
+			$req_insert->execute(array('pseudo' => $pseudo, 'email' => $email, 'mdp' => $password));
 			$req_insert->closeCursor();
 			return true;
 		}

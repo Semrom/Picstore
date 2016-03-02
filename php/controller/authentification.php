@@ -22,14 +22,13 @@
 		if (isset($_POST['pseudo_user']) && !empty($_POST['pseudo_user']) &&
 			isset($_POST['email_user']) && !empty($_POST['email_user']) &&
 			isset($_POST['mdp_user']) && !empty($_POST['mdp_user']) &&
-			isset($_POST['mdp_user_repeat']) && !empty($_POST['mdp_user_repeat']) &&
-			isset($_POST['avatar_user']) && !empty($_POST['password_confirm']))
+			isset($_POST['mdp_confirm_user']) && !empty($_POST['mdp_confirm_user']))
 		{
 			// Protection des données
 			$pseudo = htmlspecialchars($_POST['pseudo_user']);
 			$email = htmlspecialchars($_POST['email_user']);
 			$motDePasse = sha1(htmlspecialchars($_POST['mdp_user']));
-			$motDePasseReapeat = sha1(htmlspecialchars($_POST['mdp_user_repeat']));
+			$motDePasseReapeat = sha1(htmlspecialchars($_POST['mdp_confirm_user']));
 			$avatar = $_POST['avatar_user'];
 
 			// Si les deux mots de passe sont identiques
@@ -41,7 +40,7 @@
 					// Connexion à la base
 					try
 					{
-						$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', '');
+						$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', 'root');
 					}
 					catch (Exception $e)
 					{
@@ -89,8 +88,6 @@
 
 							unset($_POST);
 							$reponse->success = true;
-							$reponse->message = "Un mail contenant un lien de validation a été envoyé à votre adresse pour activer votre compte. <br />
-												 Si vous ne le trouvez pas, vérifiez votre dossier 'spams' ou 'courriers indésirables'.<br />";
 
 							$bdd = null;
 						}
@@ -133,7 +130,7 @@
 			// Connexion à la base
 			try
 			{
-				$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', '');
+				$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', 'root');
 			}
 			catch (Exception $e)
 			{
@@ -142,7 +139,7 @@
 
 			// Nouvel objet "Log"
 			$log = new Log($bdd);
-			$isSuccess = $log->connexion($pesudo, $password);
+			$isSuccess = $log->connexion($pseudo, $mdp);
 
 			// Si la connexion a réussi
 			if ($isSuccess)
@@ -150,7 +147,7 @@
 				// Nouvel objet "User"
 				$user = new User($bdd);
 				// Récupération des informations de l'utilisateur
-				$userInfos = $user->getInfos($email);
+				$userInfos = $user->getInfos($pseudo);
 				// Si le compte de l'utilisateur est activé
 				if ($userInfos['actif'] == 1)
 				{

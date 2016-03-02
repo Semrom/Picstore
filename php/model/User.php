@@ -18,15 +18,15 @@ class User {
 		}
 
     	// Récupère les informations d'un l'utilisateur par son email
-		public function getInfos($email) {
-			$req_info = $this->bdd->prepare('SELECT peudo_user, date_inscription_user FROM utilisateur WHERE email_user=:email');
-			$req_info->execute(array('email' => $email));
+		public function getInfos($pseudo) {
+			$req_info = $this->bdd->prepare('SELECT pseudo_user, date_inscription_user, actif FROM utilisateur WHERE pseudo_user=:pseudo');
+			$req_info->execute(array('pseudo' => $pseudo));
 			$donnees = $req_info->fetch();
 			$req_info->closeCursor();
 
 			// Conversion de la date au format français.
 			$format = 'Y-m-d H:i:s';
-			$date = DateTime::createFromFormat($format, $donnees['date_inscription']);
+			$date = DateTime::createFromFormat($format, $donnees['date_inscription_user']);
 			$dateFr = $date->format('d / m / Y');
 
 			$donnees['date_inscription_user'] = $dateFr;
