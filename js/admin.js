@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $('#form-admin').submit(function() {
 		var donnees = $('#form-admin').serialize();
-		/*DEBUG : console.log(donnees);*/
+		/*console.log(donnees);*/
 		$('.login-block').fadeOut(500, function() {
 			$.ajax({
 				url: '../php/controller/authentification_admin.php',
