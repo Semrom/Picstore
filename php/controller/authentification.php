@@ -10,6 +10,9 @@
 	require_once "../model/Log.php";
 	require_once "../model/User.php";
 
+	//Inclusion du fichier de connexion à la BD
+	include_once "connect-bd.php";
+
 	// Objet "reponse" pour JSON
 	$reponse = new stdClass();
 	$reponse->success = false;
@@ -36,16 +39,6 @@
 				// Si le format de l'e-mail est correct
 				if (preg_match('/^[-+.\w]{1,64}@[-.\w]{1,64}\.[-.\w]{2,6}$/i', $email))
 				{
-					// Connexion à la base
-					try
-					{
-						$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', '');
-					}
-					catch (Exception $e)
-					{
-					        die('Erreur : ' . $e->getMessage());
-					}
-
 					// Nouvel objet "Log"
 					$log = new Log($bdd);
 					// Vérification de l'existance du mail
@@ -132,16 +125,6 @@
 			// Protection des données
 			$pseudo = htmlspecialchars($_POST['pseudo_user']);
 			$mdp = sha1(htmlspecialchars($_POST['mdp_user']));
-
-			// Connexion à la base
-			try
-			{
-				$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', '');
-			}
-			catch (Exception $e)
-			{
-			        die('Erreur : ' . $e->getMessage());
-			}
 
 			// Nouvel objet "Log"
 			$log = new Log($bdd);

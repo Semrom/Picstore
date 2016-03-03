@@ -17,14 +17,8 @@
 		$email = htmlspecialchars($_POST['email']);
 		$motDePasse = sha1(htmlspecialchars($_POST['pass']));
 
-    	try
-		{
-			$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', '');
-		}
-		catch (Exception $e)
-		{
-		        die('Erreur : ' . $e->getMessage());
-		}
+		//Inclusion du fichier de connexion à la BD
+		include_once "connect-bd.php";
 
 		$log = new LogAdmin($bdd);
 		$isSuccess = $log->connexion($email, $motDePasse);

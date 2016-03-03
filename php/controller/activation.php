@@ -8,17 +8,10 @@
   	// Si les paramètres dans l'URL existent
 	if (isset($_GET['mail']) && isset($_GET['cle']))
 	{
-    	// Connexion à la base
-		try
-		{
-			$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', '');
-		}
-		catch (Exception $e)
-		{
-		        die('Erreur : ' . $e->getMessage());
-		}
+		//Inclusion du fichier de connexion à la BD
+		include_once "connect-bd.php";
 
-    	// Récupération des données
+    // Récupération des données
 		$email = $_GET['mail'];
 		$cle = $_GET['cle'];
 
