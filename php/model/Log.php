@@ -33,6 +33,23 @@
 			}
 		}
 
+		// Vérifie si le pseudo est présent au sein de la base
+    	public function pseudoExist($pseudo) {
+			$req = $this->bdd->prepare("SELECT id_user FROM utilisateur WHERE pseudo_user=:pseudo");
+			$req->execute(array('pseudo' => $pseudo));
+			$exist = $req->fetch();
+			$req->closeCursor();
+
+			if ($exist)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
 		// Vérifie si le mail est présent au sein de la base
     	public function mailExist($email) {
 			$req = $this->bdd->prepare("SELECT id_user FROM utilisateur WHERE email_user=:email");
@@ -51,7 +68,7 @@
 		}
 
 		// Insère les données dans la base lors de l'inscription d'un utilisateur
-    	public function inscription($pseudo, $email, $password, $avatar) {
+    	public function inscription($pseudo, $email, $password) {
       	$req_insert = $this->bdd->prepare('INSERT INTO utilisateur(pseudo_user, email_user, mdp_user, date_inscription_user, actif) VALUES(:pseudo, :email, :mdp, NOW(), 0)');
 			$req_insert->execute(array('pseudo' => $pseudo, 'email' => $email, 'mdp' => $password));
 			$req_insert->closeCursor();

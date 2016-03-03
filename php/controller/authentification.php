@@ -28,11 +28,10 @@
 			$pseudo = htmlspecialchars($_POST['pseudo_user']);
 			$email = htmlspecialchars($_POST['email_user']);
 			$motDePasse = sha1(htmlspecialchars($_POST['mdp_user']));
-			$motDePasseReapeat = sha1(htmlspecialchars($_POST['mdp_confirm_user']));
-			$avatar = $_POST['avatar_user'];
+			$motDePasseConfirm = sha1(htmlspecialchars($_POST['mdp_confirm_user']));
 
 			// Si les deux mots de passe sont identiques
-			if ($motDePasse == $motDePasseReapeat)
+			if ($motDePasse == $motDePasseConfirm)
 			{
 				// Si le format de l'e-mail est correct
 				if (preg_match('/^[-+.\w]{1,64}@[-.\w]{1,64}\.[-.\w]{2,6}$/i', $email))
@@ -40,7 +39,7 @@
 					// Connexion à la base
 					try
 					{
-						$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', 'root');
+						$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', '');
 					}
 					catch (Exception $e)
 					{
@@ -55,45 +54,52 @@
 					// Si le mail n'existe pas, OK
 					if (!$mailExist)
 					{
-						// Inscription
-						$isSuccess = $log->inscription($pseudo, $email, $motDePasse, $avatar);
+						$pseudoExist = $log->pseudoExist($pseudo);
 
-						if ($isSuccess)
-						{
-							/***** EMAIL DE CONFIRMATION *****/
+						if (!$pseudoExist) {
 
-							// Clé d'activation propre à l'utilisateur pour l'activation
-							$cle = md5(microtime(TRUE)*100000);
+							// Inscription
+							$isSuccess = $log->inscription($pseudo, $email, $motDePasse);
 
-							// Insertion de la clé en base
-							$stmt = $bdd->prepare("UPDATE utilisateur SET cle=:cle WHERE email_user=:email");
-							$stmt->execute(array('cle' => $cle, 'email' => $email));
+							if ($isSuccess)
+							{
+								/***** EMAIL DE CONFIRMATION *****/
 
-							// Corps du mail
-							$sujet = "Activer votre compte" ;
-							$nom = "Picstore";
-							$email = "contact@picstore.16mb.com";
+								// Clé d'activation propre à l'utilisateur pour l'activation
+								$cle = md5(microtime(TRUE)*100000);
 
-							$entete = "From: " . $nom . " <" . $email . ">\n";
+								// Insertion de la clé en base
+								$stmt = $bdd->prepare("UPDATE utilisateur SET cle=:cle WHERE email_user=:email");
+								$stmt->execute(array('cle' => $cle, 'email' => $email));
 
-							$message = 'Bienvenue sur Picstore !' . "\n\n";
+								// Corps du mail
+								$sujet = "Activer votre compte" ;
+								$nom = "Picstore";
+								$email = "contact@picstore.16mb.com";
 
-							$message .= 'Afin d\'activer votre compte, veuillez cliquer sur le lien ci-dessous :' . "\n\n";
+								$entete = "From: " . $nom . " <" . $email . ">\n";
 
-							$message .= 'http://picstore.16mb.com/php/controller/activation.php?mail=' . urlencode($email) . '&cle=' . urlencode($cle) . '' . "\n\n";
+								$message = 'Bienvenue sur Picstore !' . "\n\n";
 
-							$message .= '---------------' . "\n" . 'Ceci est un mail automatique, merci de ne pas y répondre.';
+								$message .= 'Afin d\'activer votre compte, veuillez cliquer sur le lien ci-dessous :' . "\n\n";
 
-							mail($email, $sujet, $message, $entete);
+								$message .= 'http://picstore.16mb.com/php/controller/activation.php?mail=' . urlencode($email) . '&cle=' . urlencode($cle) . '' . "\n\n";
 
-							unset($_POST);
-							$reponse->success = true;
+								$message .= '---------------' . "\n" . 'Ceci est un mail automatique, merci de ne pas y répondre.';
 
-							$bdd = null;
-						}
-						else
-						{
-							$reponse->message = "Erreur : l'inscription a échoué. Veuillez réessayer.";
+								mail($email, $sujet, $message, $entete);
+
+								unset($_POST);
+								$reponse->success = true;
+
+								$bdd = null;
+							}
+							else
+							{
+								$reponse->message = "Erreur : l'inscription a échoué. Veuillez réessayer.";
+							}
+						} else {
+							$reponse->message = "Ce pseudo est déjà utilisé.";
 						}
 					}
 					else
@@ -130,7 +136,7 @@
 			// Connexion à la base
 			try
 			{
-				$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', 'root');
+				$bdd = new PDO('mysql:host=localhost;dbname=picstore;charset=utf8', 'root', '');
 			}
 			catch (Exception $e)
 			{

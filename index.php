@@ -7,16 +7,16 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	    <meta name="description" content="Picstore : Hébergez et partagez vos images !" />
 	    <meta name="keywords" content="picstore, hébrgement, héberger, images, partager, sockage, stocker, photos, media, share, sharing, host, hosting, sharing, pic, pics, picture, pictures, network, communauty" />
-			<!-- CSS Site -->
+		<!-- CSS Site -->
 	    <link rel="stylesheet" href="css/bootstrap.css" />
 	    <link rel="stylesheet" href="css/style.css" />
 	    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-	
+
 		<!-- CSS Slider -->
 	    <link rel="stylesheet" type="text/css" href="slider-images/css/demo.css" />
 	    <link rel="stylesheet" type="text/css" href="slider-images/css/slider.css" />
 	    <link rel="stylesheet" type="text/css" href="slider-images/css/elastislide.css" />
-			<!-- Script Slider -->
+		<!-- Script Slider -->
 	    <script id="img-wrapper-tmpl" type="text/x-jquery-tmpl">
 	        <div class="rg-image-wrapper">
 	            {{if itemsCount > 1}}
@@ -35,9 +35,9 @@
 	        </div>
 	    </script>
 	</head>
-	
-	<body>	
-	    <!-- MENU -->	    <?php include_once('php/view/modules/menu.php'); ?>	    
+
+	<body>
+	    <!-- MENU -->	    <?php include_once('php/view/modules/menu.php'); ?>
 	    <!-- SOUS-TITRE -->
 	    <div class="container">
 	        <div class="page-header" id="banner">
@@ -47,7 +47,7 @@
 	                </div>
 	            </div>
 	        </div>
-	
+
 	        <!-- RECHERCHE -->
 	        <form class="form-horizontal" id="formulaire-recherche" action="" method="">
 	            <div class="col-lg-12 centrer">
@@ -58,7 +58,7 @@
 	            <a href="#">Recherche avancée</a>
 	        </div>
 	    </div>
-	
+
 	    <!-- SECTION GALLERIE IMAGES -->
 	    <section>
 	        <div class="container">
@@ -152,7 +152,7 @@
 	            </div>
 	        </div>
 	    </section>
-	
+
 	    <!-- SECTION COMMENTAIRES -->
 	    <section>
 	        <div class="container">
@@ -169,11 +169,11 @@
 	                </div>
 	            </div>
 	        </div>
-	    </section>		
+	    </section>
 	    <!-- PIED DE PAGE -->
 	    <?php include_once('php/view/modules/footer.php'); ?>
-	
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>	    <script type="text/javascript" src="js/authentification.js"></script>
+
+	    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>-->			<script src="js/jquery-2.1.3.min.js"></script>	    <script type="text/javascript" src="js/authentification.js"></script>
 	    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 	    <script type="text/javascript" src="slider-images/js/jquery.tmpl.min.js"></script>
 	    <script type="text/javascript" src="slider-images/js/jquery.easing.1.3.js"></script>
