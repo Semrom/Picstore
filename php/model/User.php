@@ -1,4 +1,4 @@
-<?php
+ <?php
 /**
 * @author Romain Semler
 *
@@ -17,9 +17,9 @@ class User {
 			$this->bdd = $bdd;
 		}
 
-    	// Récupère les informations d'un l'utilisateur par son email
+    	// Récupère les informations d'un l'utilisateur par son pseudo
 		public function getInfos($pseudo) {
-			$req_info = $this->bdd->prepare('SELECT pseudo_user, email_user, actif, DATE_FORMAT(date_inscription_user, \'%d / %m / %Y\') AS date_inscription_user FROM utilisateur WHERE pseudo_user=:pseudo');
+			$req_info = $this->bdd->prepare('SELECT pseudo_user, email_user, avatar_user, actif, DATE_FORMAT(date_inscription_user, \'%d / %m / %Y\') AS date_inscription_user FROM utilisateur WHERE pseudo_user=:pseudo');
 			$req_info->execute(array('pseudo' => $pseudo));
 			$donnees = $req_info->fetch();
 			$req_info->closeCursor();

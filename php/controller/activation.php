@@ -6,19 +6,19 @@
 	require_once "../model/User.php";
 
   	// Si les paramètres dans l'URL existent
-	if (isset($_GET['mail']) && isset($_GET['cle']))
+	if (isset($_GET['pseudo']) && isset($_GET['cle']))
 	{
 		//Inclusion du fichier de connexion à la BD
 		include_once "connect-bd.php";
 
     // Récupération des données
-		$email = $_GET['mail'];
+		$pseudo = $_GET['pseudo'];
 		$cle = $_GET['cle'];
 
     	// Nouvel objet "Log"
 		$log = new Log($bdd);
     	// Récupération de la clé et de l'état "actif" du compte
-		$donnees = $log->etatCompte($email);
+		$donnees = $log->etatCompte($pseudo);
 
 		if($donnees)
 		{
@@ -39,11 +39,11 @@
 			if($cle == $clebdd)
 			{
 				// La fonction qui va passer notre champ actif de 0 à 1
-				$log->activerCompte($email);
+				$log->activerCompte($pseudo);
 				// Nouvel objet "User"
 				$user = new User($bdd);
 				// Création de la session contenant toutes les informations de l'utilisateur
-				$_SESSION['user'] = $user->getInfos($email);
+				$_SESSION['user'] = $user->getInfos($pseudo);
 				// Redirection vers la page de confirmation
 				header('Location: ../view/confirmation.php?msg=Actif');
 			}

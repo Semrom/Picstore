@@ -18,9 +18,6 @@
 
 	<body>
 
-	    <!-- MENU -->
-	    <?php include_once('modules/menu.php'); ?>
-
 	    <!-- SOUS-TITRE -->
 	    <div class="container">
 	        <div class="page-header" id="banner">
@@ -33,7 +30,7 @@
           <?php if (isset($_GET['msg']) && $_GET['msg'] == "Actif") { ?>
 			      	<div class="centrer">
 				      	<h3>Votre compte a été activé avec succès !</h3><br />
-				      	<a href="../../compte.php" class="btn btn-info">Accéder à mon compte</a><br />
+				      	<a href="../../compte.php" class="btn btn-info">Accéder à mon compte</a><br /><br />				      	<a href="../../upload.php" class="btn btn-info">Mettre en ligne une image</a>
 				    </div>
 				<?php } else if (isset($_GET['msg']) && $_GET['msg'] == "DejaActif") { ?>
 			    	<div style="text-align: center;">

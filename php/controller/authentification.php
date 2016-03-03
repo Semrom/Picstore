@@ -76,7 +76,9 @@
 
 								$message .= 'Afin d\'activer votre compte, veuillez cliquer sur le lien ci-dessous :' . "\n\n";
 
-								$message .= 'http://picstore.16mb.com/php/controller/activation.php?mail=' . urlencode($email) . '&cle=' . urlencode($cle) . '' . "\n\n";
+								$message .= 'http://picstore.16mb.com/php/controller/activation.php?pseudo=' . urlencode($pseudo) . '&cle=' . urlencode($cle) . '' . "\n\n";
+
+								$message .= '---------------' . "\n" . 'Si vous n\'êtes pas à l\'origine de cette inscription, veuillez ne pas en tenir compte.';
 
 								$message .= '---------------' . "\n" . 'Ceci est un mail automatique, merci de ne pas y répondre.';
 
