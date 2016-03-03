@@ -48,10 +48,10 @@
 				header('Location: ../view/confirmation.php?msg=Actif');
 			}
 			else
-	      	{
-	          	// Redirection vers une erreur, mauvaise URL
-	        	header('Location: ../view/confirmation.php?msg=Error');
-	      	}
+    	{
+        	// Redirection vers une erreur, mauvaise URL
+      	header('Location: ../view/confirmation.php?msg=Error');
+    	}
 		}
 	}
 	else

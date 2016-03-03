@@ -68,9 +68,9 @@
 								// Corps du mail
 								$sujet = "Activer votre compte" ;
 								$nom = "Picstore";
-								$email = "contact@picstore.16mb.com";
+								$contact = "contact@picstore.16mb.com";
 
-								$entete = "From: " . $nom . " <" . $email . ">\n";
+								$entete = "From: " . $nom . " <" . $contact . ">\n";
 
 								$message = 'Bienvenue sur Picstore !' . "\n\n";
 

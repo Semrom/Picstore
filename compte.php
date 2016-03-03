@@ -43,6 +43,10 @@
 	        <div id="nb_like_user" class="centrer">
 	            <h2>13423 J'aime</h2>
 	        </div>
+
+          <div class="centrer">
+	            <h2>Inscrit le : <?php echo $_SESSION['user']['date_inscription_user']; ?></h2>
+	        </div>
       </div>
       <?php } else { ?>
         <div class="container centrer">
