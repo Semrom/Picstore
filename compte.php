@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	    <title>Picstore</title>
+	    <title>Picstore | Mon compte</title>
 	    <meta charset="UTF-8" />
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -34,7 +34,7 @@
 	    <div class="container">
 	        <!-- AVATAR -->
 	        <div id="avatar-container" class="container">
-	            <div class="ratio img-responsive img-circle" style="background-image:url(http://placekitten.com/g/400/200)"></div>
+	            <div class="ratio img-responsive img-circle" style="background-image:url(<?php echo $_SESSION['user']['avatar_user']; ?>)"></div>
 	        </div>
 	        <div id="pseudo_user" class="centrer">
 	            <h1><?php echo $_SESSION['user']['pseudo_user']; ?></h1>
@@ -60,10 +60,6 @@
 
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-	    <script type="text/javascript" src="slider-images/js/jquery.tmpl.min.js"></script>
-	    <script type="text/javascript" src="slider-images/js/jquery.easing.1.3.js"></script>
-	    <script type="text/javascript" src="slider-images/js/jquery.elastislide.js"></script>
-	    <script type="text/javascript" src="slider-images/js/gallery.js"></script>
 	</body>
 
 </html>
