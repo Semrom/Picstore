@@ -38,15 +38,15 @@
   				<div class="alert alert-dismissible alert-success centrer" id="ok-zone-upload">
   				  <strong>Super !</strong> <br /> Vous pouvez maintenant <a href="#" id="consult-image">consulter votre image</a>.
   				</div>
-  				<form class="form-horizontal" id="form-signup">
+  				<form action="php/controller/upload_traitement.php" method="POST" class="form-horizontal" id="form-signup" enctype="multipart/form-data">
   				  <fieldset>
   				    <legend>Mettre en ligne une image</legend>
   				    <div class="alert alert-dismissible alert-danger centrer" id="error-zone-upload">
   				      <p id="error-text"></p>
   				    </div>
   				    <div class="form-group">
-  				      <label for="inputUpload" class="col-lg-2 control-label">Fichier :</label>
-  				      <div class="col-lg-10">
+  				      <label for="inputUpload" class="col-lg-2 control-label">Fichier (5 Mo max.) :</label>
+  				      <div class="col-lg-10">  				      	<!-- Limitation de la taille du fichier à 5Mo -->  				        <input type="hidden" name="MAX_FILE_SIZE" value="5242880">  				        
   				        <input type="file" class="form-control" name="" id="inputUpload" >
   				      </div>
   				    </div>
@@ -66,8 +66,8 @@
   				      <label for="selectTheme" class="col-lg-2 control-label">Thème :</label>
   				      <div class="col-lg-10">
   				        <select class="form-control" id="selectTheme" name="theme_img">
-                    <option>-- Choisir --</option>
-                  </select>
+                    		<option value="">-- Choisir --</option>                    		<option value="Abstrait">Abstrait</option>                    		<option value="Animaux">Animaux</option>                    		<option value="Astrophotographie">Astrophotographie</option>                    		<option value="Architecture">Architecture</option>                    		<option value="Concerts">Concerts</option>                    		<option value="Cosplay">Cosplay</option>                    		<option value="Cuisine">Cuisine</option>                    		<option value="Culture étrangère">Culture étrangère</option>                    		<option value="Humour">Humour</option>                    		<option value="Mariage">Mariage</option>                    		<option value="Mode">Mode</option>                    		<option value="Nature Morte">Nature Morte</option>                    		<option value="Paysage">Paysage</option>                    		<option value="Peinture">Peinture</option>                    		<option value="Personnalité">Personnalité</option>                    		<option value="Portrait">Portrait</option>                    		<option value="Spectacles">Spectacles</option>                    		<option value="Sport">Sport</option>                    		<option value="Vacances">Vacances</option>                    		<option value="Vie quotidienne">Vie quotidienne</option>                    		<option value="Voyages">Voyages</option>
+                  		</select>
   				      </div>
   				    </div>
   				    <input type="hidden" name="form" value="upload" />
