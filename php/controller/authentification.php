@@ -30,12 +30,12 @@
 			// Protection des données
 			$pseudo = htmlspecialchars($_POST['pseudo_user']);
 			$email = htmlspecialchars($_POST['email_user']);
-			$motDePasse = sha1(htmlspecialchars($_POST['mdp_user']));
-			$motDePasseConfirm = sha1(htmlspecialchars($_POST['mdp_confirm_user']));
+			$motDePasse = htmlspecialchars($_POST['mdp_user']);
+			$motDePasseConfirm = htmlspecialchars($_POST['mdp_confirm_user']);
 
 			// Si les deux mots de passe sont identiques
 			if ($motDePasse == $motDePasseConfirm)
-			{
+			{				$mdp_complet = $motDePasse . 'graindeselpourlasecurite';				$mdp_crypt = sha1($mdp_complet);				
 				// Si le format de l'e-mail est correct
 				if (preg_match('/^[-+.\w]{1,64}@[-.\w]{1,64}\.[-.\w]{2,6}$/i', $email))
 				{
@@ -52,7 +52,7 @@
 						if (!$pseudoExist) {
 
 							// Inscription
-							$isSuccess = $log->inscription($pseudo, $email, $motDePasse);
+							$isSuccess = $log->inscription($pseudo, $email, $mdp_crypt);
 
 							if ($isSuccess)
 							{
@@ -126,11 +126,11 @@
 		{
 			// Protection des données
 			$pseudo = htmlspecialchars($_POST['pseudo_user']);
-			$mdp = sha1(htmlspecialchars($_POST['mdp_user']));
+			$mdp = htmlspecialchars($_POST['mdp_user']);			$mdp_complet = $mdp . 'graindeselpourlasecurite';			$mdp_crypt = sha1($mdp_complet);
 
 			// Nouvel objet "Log"
 			$log = new Log($bdd);
-			$isSuccess = $log->connexion($pseudo, $mdp);
+			$isSuccess = $log->connexion($pseudo, $mdp_crypt);
 
 			// Si la connexion a réussi
 			if ($isSuccess)
