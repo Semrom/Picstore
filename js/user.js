@@ -30,11 +30,11 @@ function insideAlbumBar() {
         "<button id='returnBtn' class='btn btn-default col-xs-3 col-sm-2 col-md-1' type='button'>Retour</button>";
     $("#control-bar-album").prepend(htmlInsideAlbum);
     $("#returnBtn").click(function() {
-        revertToAlbumsList(contentsAlbumsList,contentsAlbum);
+        revertToAlbumsList(contentsAlbumsList, contentsAlbum);
     });
 }
 
-function revertToAlbumsList(contents,contentsClick) {
+function revertToAlbumsList(contents, contentsClick) {
     $("#control-bar-album").fadeOut(function() {
         $("#returnBtn").remove();
         var albumsListTitle = "Galeries de " + $("h1").text();
@@ -72,16 +72,20 @@ function enterAlbum(contents) {
         $(".cell").remove();
         wall.refresh();
         wall.fitWidth();
-        initAlbumContent(contents);
-        $(".cell").click(function(){
+        initAlbumContent(contents, function() {
+            $(".cell").wrap("<a href='img/" + contents.images[0].link +
+                "'></a>");
+        });
+
+        /*$(".cell").click(function(){
             var url = "img/"+contents.images[0].link;
             window.open(url);
-        });
+        });*/
     });
     $("#control-bar-album,#album-content").fadeIn();
 }
 
-function initAlbumContent(contents) {
+function initAlbumContent(contents, callback) {
     var html = '';
 
     for (var i = 0; i < contents.limitItem; ++i) {
@@ -102,6 +106,8 @@ function initAlbumContent(contents) {
     });
     wall.fitWidth();
     $(window).trigger("resize");
+    if (callback != undefined)
+        callback();
 }
 
 function addNewCell(imgLink, width, height) {
