@@ -31,7 +31,7 @@
 	        <!-- GRILLE DE GALLERIES -->
             <div id="album" class="container album">
                 <div id="control-bar-album" class="container-fluid">
-                    <h4 class="col-xs-5 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 centrer">Galerie de ChaTLourd</h4>
+                    <h4 class="col-xs-5 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 centrer">Galeries de ChaTLourd</h4>
                 </div>
 
                 <div id="album-content" class="container album-content"></div>

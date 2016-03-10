@@ -25,19 +25,19 @@ $(document).ready(function() {
     });
 });
 
-function insideAlbumBar(action) {
+function insideAlbumBar() {
     var htmlInsideAlbum =
         "<button id='returnBtn' class='btn btn-default col-xs-3 col-sm-2 col-md-1' type='button'>Retour</button>";
     $("#control-bar-album").prepend(htmlInsideAlbum);
     $("#returnBtn").click(function() {
-            action();
+        revertToAlbumsList(contentsAlbumsList,contentsAlbum);
     });
 }
 
-function revertToAlbumsList() {
+function revertToAlbumsList(contents,contentsClick) {
     $("#control-bar-album").fadeOut(function() {
         $("#returnBtn").remove();
-        var albumsListTitle = "Galerie de " + $("h1").text();
+        var albumsListTitle = "Galeries de " + $("h1").text();
         $("h4").text(albumsListTitle);
         $("h4").removeClass();
         $("h4").addClass(
@@ -49,9 +49,9 @@ function revertToAlbumsList() {
         $(".cell").remove();
         wall.refresh();
         wall.fitWidth();
-        initAlbumContent(contentsAlbumsList);
+        initAlbumContent(contents);
         $(".cell").click(function() {
-            enterAlbum(contentsAlbum);
+            enterAlbum(contentsClick);
         });
     });
 
@@ -60,7 +60,7 @@ function revertToAlbumsList() {
 
 function enterAlbum(contents) {
     $("#control-bar-album").fadeOut(function() {
-        insideAlbumBar(revertToAlbumsList);
+        insideAlbumBar();
         var albumTitle = contents.title;
         $("h4").text(albumTitle);
         $("h4").removeClass();
@@ -72,7 +72,11 @@ function enterAlbum(contents) {
         $(".cell").remove();
         wall.refresh();
         wall.fitWidth();
-        initAlbumContent(contentsAlbum);
+        initAlbumContent(contents);
+        $(".cell").click(function(){
+            var url = "img/"+contents.images[0].link;
+            window.open(url);
+        });
     });
     $("#control-bar-album,#album-content").fadeIn();
 }
