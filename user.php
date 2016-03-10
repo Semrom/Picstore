@@ -31,8 +31,7 @@
 	        <!-- GRILLE DE GALLERIES -->
             <div id="album" class="container album">
                 <div id="control-bar-album" class="container-fluid">
-                    <button class="btn btn-default col-xs-3 col-sm-2 col-md-1" type="button" >Retour</button>
-                    <h4 class="col-xs-5 col-xs-offset-1 col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-4" >Titre de l'album</h4>
+                    <h4 class="col-xs-5 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 centrer">Galerie de ChaTLourd</h4>
                 </div>
 
                 <div id="album-content" class="container album-content"></div>
