@@ -69,7 +69,7 @@
 
 		// Insère les données dans la base lors de l'inscription d'un utilisateur.
     	public function inscription($pseudo, $email, $password) {    	$lien = "img/avatar/defaut.png";
-      	$req_insert = $this->bdd->prepare('INSERT INTO utilisateur(pseudo_user, email_user, mdp_user, avatar_user, date_inscription_user, actif) VALUES(:pseudo, :email, :mdp, :lien, NOW(), 0)');
+      	$req_insert = $this->bdd->prepare('INSERT INTO utilisateur (pseudo_user, email_user, mdp_user, avatar_user, date_inscription_user, actif) VALUES(:pseudo, :email, :mdp, :lien, NOW(), 0)');
 			$req_insert->execute(array('pseudo' => $pseudo, 'email' => $email, 'mdp' => $password, 'lien' => $lien));
 			$req_insert->closeCursor();
 			return true;
@@ -84,10 +84,10 @@
 			return $donnees;
     	}
 
-		// Active le compte en passant l'état "actif" du compte à 1.
-    	public function activerCompte($pseudo) {
+		// Active le compte en passant l'état "actif" du compte à 1 et créer les galleries par défaut de l'utilisateur (upload et favoris).
+    	public function activerCompte($pseudo, $id) {    	    	  // Activation du compte
 	      $actif = $this->bdd->prepare("UPDATE utilisateur SET actif = 1 WHERE pseudo_user=:pseudo");
 	      $actif->execute(array('pseudo' => $pseudo));
-	      $actif->closeCursor();
+	      $actif->closeCursor();	      	      // Création du nom des galleries.	      $nomGalUpload = "upload_" . $pseudo;	      $nomGalFavoris = "favoris_" . $pseudo;	      	      // Ajout des galleries	      $creerGalUpload = $this->bdd->prepare("INSERT INTO gallerie (nom_gallerie, is_public_gallerie, is_supprimable_gallerie, suppression_gallerie, id_user) VALUES(:nom, :public, :supprimable, :suppression, :id)");	      	      $creerGalFavoris = $this->bdd->prepare("INSERT INTO gallerie (nom_gallerie, is_public_gallerie, is_supprimable_gallerie, suppression_gallerie, id_user) VALUES(:nom, :public, :supprimable, :suppression, :id)");	      	      $creerGalUpload->execute(array('nom' => $nomGalUpload, 'public' => 1, 'supprimable' => 0, 'suppression' => 0, 'id' => $id));	      $creerGalFavoris->execute(array('nom' => $nomGalFavoris, 'public' => 1, 'supprimable' => 0, 'suppression' => 0, 'id' => $id));	      	      $creerGalUpload->closeCursor();	      $creerGalFavoris->closeCursor();
 	    }
 	}

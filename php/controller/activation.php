@@ -37,21 +37,19 @@
   		{
 			// On vérifie alors si la clé de l'URL corresond à la clé dans la base
 			if($cle == $clebdd)
-			{
+			{				// Récupération des données de l'utilisateur 				$user = new User($bdd);				$donnees = $user->getInfos($pseudo);
 				// La fonction qui va passer notre champ actif de 0 à 1
-				$log->activerCompte($pseudo);
-				// Nouvel objet "User"
-				$user = new User($bdd);
+				$log->activerCompte($pseudo, $donnees['id_user']);
 				// Création de la session contenant toutes les informations de l'utilisateur
-				$_SESSION['user'] = $user->getInfos($pseudo);
+				$_SESSION['user'] = $donnees;
 				// Redirection vers la page de confirmation
 				header('Location: ../view/confirmation.php?msg=Actif');
 			}
 			else
-    	{
-        	// Redirection vers une erreur, mauvaise URL
-      	header('Location: ../view/confirmation.php?msg=Error');
-    	}
+    		{
+	        	// Redirection vers une erreur, mauvaise URL
+	      		header('Location: ../view/confirmation.php?msg=Error');
+    		}
 		}
 	}
 	else
