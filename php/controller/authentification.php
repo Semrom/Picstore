@@ -87,7 +87,7 @@
 								unset($_POST);
 								$reponse->success = true;
 
-								$bdd = null;
+								$bdd = null;								
 							}
 							else
 							{
