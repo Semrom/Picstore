@@ -45,8 +45,7 @@
   				    <div class="form-group">
   				      <label for="inputUpload" class="col-lg-2 control-label">Fichier :</label>
   				      <div class="col-lg-10">
-
-  				        <input type="file" class="form-control" name="image" id="inputUpload" >
+  				        <input type="file" class="form-control" name="image" id="inputUpload">
   				      </div>
   				    </div>
 
