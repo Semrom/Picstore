@@ -1,10 +1,12 @@
 <?php
 	session_start();
+
+	$inView = true;
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
-	    <title>Picstore</title>
+	    <title>Bienvenue sur Picstore</title>
 	    <meta charset="UTF-8" />
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -16,8 +18,7 @@
 
 	</head>
 
-	<body>
-
+	<body>		<?php if (isset($_SESSION['user'])) { ?>			<!-- MENU -->			<?php include_once('modules/menu.php'); ?>		<?php } ?>
 	    <!-- SOUS-TITRE -->
 	    <div class="container">
 	        <div class="page-header" id="banner">
@@ -27,7 +28,7 @@
 	            </div>
 	        </div>
 
-          <?php if (isset($_GET['msg']) && $_GET['msg'] == "Actif") { ?>
+          <?php if (isset($_SESSION['user'])) {          		if (isset($_GET['msg']) && $_GET['msg'] == "Actif") { ?>
 			      	<div class="centrer">
 				      	<h3>Votre compte a été activé avec succès !</h3><br />
 				      	<a href="../../compte.php" class="btn btn-info">Accéder à mon compte</a><br /><br />				      	<a href="../../upload.php" class="btn btn-info">Mettre en ligne une image</a>
@@ -47,7 +48,7 @@
 				      	<h3>Erreur fatale</h3><br />
 				      	<a href="../../" class="btn btn-info">Retour</a><br />
 				    </div>
-				<?php } ?>
+				<?php }				} else { ?>					<div class="centrer">					      <h1>Erreur Fatale</h1><br />					    <a href="../../" class="btn btn-info">Retour</a>					</div>				<?php } ?>
 
 	    </div>
 
