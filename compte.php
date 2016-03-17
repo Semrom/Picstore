@@ -17,11 +17,10 @@
 
 	<body>
 
-	    <!-- MENU -->
-	    <?php include_once('php/view/modules/menu.php'); ?>
+	    <?php if (isset($_SESSION['user'])) { ?>	    	<!-- MENU -->	    	<?php include_once('php/view/modules/menu.php'); ?>	    <?php } ?>
 
 	    <!-- CONTENEUR D'EN-TETE -->
-	    <div class="container">
+	    <div class="container">	    <?php if (isset($_SESSION['user'])) { ?>
 	    	<div class="page-header" id="banner">
 	    	    <div class="row">
 	    	        <div class="col-lg-12 col-md-7 col-sm-6" id="sous-titre-bloc">
@@ -30,7 +29,6 @@
 	    	</div>
 	    </div>
 
-      <?php if (isset($_SESSION['user'])) { ?>
 	    <div class="container">
 	        <!-- AVATAR -->
 	        <div id="avatar-container" class="container">
@@ -48,11 +46,7 @@
 	            <h2>Inscrit le : <?php echo $_SESSION['user']['date_inscription_user']; ?></h2>
 	        </div>
       </div>
-      <?php } else { ?>
-        <div class="container centrer">
-  	        <h1>Erreur : connectez-vous !</h1>
-            <a href="./">Retour</a>
-        </div>
+      <?php } else { ?>      	<div class="page-header" id="banner">      		    <div class="row">      		        <div class="col-lg-12 col-md-7 col-sm-6" id="sous-titre-bloc">      		        	<p id="sous-titre-text"></p>      		        </div>      		    </div>      		</div>      	</div>      	          <div class="centrer">                <h1>Erreur : connectez-vous !</h1><br />              <a href="./" class="btn btn-info">Retour</a>          </div>
       <?php } ?>
 
 	    <!-- PIED DE PAGE -->
