@@ -50,9 +50,9 @@
                 </div>
             </div>
           </div>
-          <h1 style="text-align: center;">Compte administrateur de <?php echo $_SESSION['user']['prenom_admin']; ?></h1>
+          <h1 class="centrer">Compte administrateur de <?php echo $_SESSION['user']['prenom_admin']; ?></h1>
           <br />
-    	  <p style="text-align: center;">C'est OK !</p>
+    	  <h3>Derniers inscrits :</h3>    	  <?php include_once "../php/view/general_bd.php"; ?>
       </div>
       <script src="../js/jquery-2.1.3.min.js"></script>
       <script src="../js/admin.js"></script>
