@@ -62,11 +62,34 @@
 
 		    			<div class="col-lg-3">
 			    			<select class="form-control" id="select-theme-research">
-			          				<option>Thèmes</option>
-			          				<option>2</option>
-			          				<option>3</option>
-			          				<option>4</option>
-			          				<option>5</option>
+			          			<option value="">-- Choisir --</option>
+                    			<option value="Abstrait">Abstrait</option>
+                    			<option value="Animaux">Animaux</option>
+                    			<option value="Astrophotographie">Astrophotographie</option>
+                    			<option value="Architecture">Architecture</option>
+                    			<option value="Concerts">Concerts</option>
+                    			<option value="Cosplay">Cosplay</option>
+                    			<option value="Cuisine">Cuisine</option>
+                    			<option value="Culture étrangère">Culture étrangère</option>
+                    			<option value="Humour">Humour</option>
+                    			<option value="Jeux">Jeux</option>
+                    			<option value="Jeux Vidéo">Jeux Vidéo</option>
+                    			<option value="Mariage">Mariage</option>
+                    			<option value="Mode">Mode</option>
+                    			<option value="Nature Morte">Nature Morte</option>
+                    			<option value="Paysage">Paysage</option>
+                    			<option value="Peinture">Peinture</option>
+                    			<option value="Personnalité">Personnalité</option>
+                    			<option value="Portrait">Portrait</option>
+                    			<option value="Séries">Séries</option>
+                    			<option value="Spectacles">Spectacles</option>
+                    			<option value="Sport">Sport</option>
+                    			<option value="Télévision">Télévision</option>
+                    			<option value="Vacances">Vacances</option>
+                    			<option value="Vie quotidienne">Vie quotidienne</option>
+                    			<option value="Ville">Ville</option>
+                    			<option value="Voyages">Voyages</option>
+                    			<option value="Wallpaper">Wallpaper</option>
 			        		</select>
 		    			</div>
 		    		</div>
