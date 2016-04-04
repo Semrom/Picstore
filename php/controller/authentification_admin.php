@@ -17,7 +17,7 @@
 		$email = htmlspecialchars($_POST['email']);
 		$motDePasse = sha1(htmlspecialchars($_POST['pass']));
 
-		//Inclusion du fichier de connexion à la BD
+		/* Inclusion du fichier de connexion à la BD */
 		include_once "connect-bd.php";
 
 		$log = new LogAdmin($bdd);
@@ -26,7 +26,7 @@
 		if ($isSuccess)
 		{
 				$prenom = $log->getPrenom($email);
-				$_SESSION['user'] = $prenom;
+				$_SESSION['admin'] = $prenom;
 				$bdd = null;
 				$reponse->success = true;
 		}

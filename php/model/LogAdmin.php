@@ -17,7 +17,7 @@
 			$this->bdd = $bdd;
 		}
 
-		// Récupère les informations lors de la connexion
+		/* Récupère les informations lors de la connexion */
 		public function connexion($email, $password) {
 			$req_connect = $this->bdd->prepare('SELECT id_admin FROM administrateur WHERE email_admin=:email AND mdp_admin=:motDePasse');
 			$req_connect->execute(array('email' => $email, 'motDePasse' => $password));
@@ -34,7 +34,7 @@
 			}
 		}
 
-		// Récupère le prénom d'un membre par son email
+		/* Récupère le prénom d'un membre par son email */
     	public function getPrenom($email) {
       		$req_connect = $this->bdd->prepare('SELECT prenom_admin FROM administrateur WHERE email_admin=:email');
 			$req_connect->execute(array('email' => $email));
