@@ -1,7 +1,7 @@
 body {
     background: black
     font-family: Montserrat;
-}
+}.centrer {	text-align: center;}
 
 .logo {
     width: 213px;
@@ -86,4 +86,4 @@ body {
   color: black;
   font-weight: bold;
   text-align: center;
-}
+}#confirmDel {	display: none;}#confirmDelImg {	display: none;}#check-text-usr {	font-weight: bold;}#check-text-img {	font-weight: bold;}#details {	display: none;}

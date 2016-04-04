@@ -1,1 +1,0 @@
-<?php 	require_once('../model/General.php');		//Inclusion du fichier de connexion à la BD	include_once "connect-bd.php";	$users = new General($bdd);	$data = $users->getUsers();?>

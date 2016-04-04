@@ -1,10 +1,9 @@
 <?php
-  session_start();
-  if (!isset($_SESSION['user'])) {
+  error_reporting(E_ALL);  ini_set('display_errors', '1');  session_start();  
+  if (!isset($_SESSION['admin'])) {
     echo '<center><h1>ERREUR FATALE</h1><br /><a href="index.php">Retour</a></center>';
-  } else {
-?>
-
+  } else {?>
+<?php	error_reporting(E_ALL);	ini_set('display_errors', '1');?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -50,12 +49,12 @@
                 </div>
             </div>
           </div>
-          <h1 class="centrer">Compte administrateur de <?php echo $_SESSION['user']['prenom_admin']; ?></h1>
-          <br />
-    	  <h3>Derniers inscrits :</h3>    	  <?php include_once "../php/view/general_bd.php"; ?>
+          <h1 class="centrer">Compte administrateur de <?php echo $_SESSION['admin']['prenom_admin']; ?></h1>
+          <br />          <section>          
+	    	  <h3 id="title-users">Derniers inscrits :</h3>	    	  <?php include_once "../php/view/all_users.php"; ?>	    	  <h3 id="title-images">Dernières images mises en ligne :</h3>	    	  <?php include_once "../php/view/all_images.php"; ?>	      </section>
       </div>
       <script src="../js/jquery-2.1.3.min.js"></script>
-      <script src="../js/admin.js"></script>
+      <script src="../js/admin.js"></script>      <script src="../js/bootstrap.min.js"></script>
     </body>
 </html>
 <?php } ?>
