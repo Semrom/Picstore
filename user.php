@@ -12,8 +12,20 @@
 	
 	</head>
 
-	<body>
-	    <!-- MENU -->	    <?php include_once('php/view/modules/menu.php'); ?>	    <!-- CONTENEUR D'EN-TETE -->	    <div class="container">	    	<div class="page-header" id="banner">	    	    <div class="row">	    	        <div class="col-lg-12 col-md-7 col-sm-6" id="sous-titre-bloc">	    	        </div>	    	    </div>	    	</div>	    </div>
+	<body>
+
+	    <!-- MENU -->
+	    <?php include_once('php/view/modules/menu.php'); ?>
+
+	    <!-- CONTENEUR D'EN-TETE -->
+	    <div class="container">
+	    	<div class="page-header" id="banner">
+	    	    <div class="row">
+	    	        <div class="col-lg-12 col-md-7 col-sm-6" id="sous-titre-bloc">
+	    	        </div>
+	    	    </div>
+	    	</div>
+	    </div>
 
 	    <div class="container">
 	        <!-- AVATAR -->
