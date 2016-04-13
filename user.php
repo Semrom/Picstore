@@ -40,6 +40,42 @@
 	            <h3>13423 J'aime</h3>
 	        </div>
 
+ 			<!-- MODIFICATION INFO -->
+	        <div id="bouton-modif" class="centrer">
+	        	<a href="#" class="btn btn-primary" onclick="displayPanelModif()">Modifier</a>
+	        </div>
+
+	        <div id="modif-container" class="container">
+				<form class="form-horizontal">
+				  	<fieldset>
+				    	<legend>Changer mon mot de passe :</legend>
+				    	<div class="form-group">
+				      		<label class="col-lg-2 control-label" for="inputPassword">Mot de passe :</label>
+				      		<div class="col-lg-10">
+				        		<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+				      		</div>
+				    	</div>
+				    	<div class="form-group">
+				      		<label class="col-lg-2 control-label" for="inputPassword">Confirmation :</label>
+				      		<div class="col-lg-10">
+				        		<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+				      		</div>
+				    	</div>
+				    	<legend>Changer mon avatar :</legend>
+				    	<div class="form-group">
+				      		<label class="col-lg-2 control-label" for="inputFile">Avatar :</label>
+				      		<div class="col-lg-10">
+				        		<input type="file" class="form-control" id="inputFile" placeholder="Choisir mon nouvel avatar...">
+				      		</div>
+				    	</div>
+				    	<div id="btn-valid-modif" class="centrer">
+							<button type="reset" class="btn btn-default">Annuler</button>
+							<button type="submit" class="btn btn-primary">Valider</button>
+						</div>
+					</fieldset>				  
+				</form>
+	        </div>
+
 	        <!-- GRILLE DE GALLERIES -->
             <div id="album" class="container album">
                 <div id="control-bar-album" class="container-fluid">
@@ -68,6 +104,7 @@
         <script type="text/javascript" src="js/freewall.js"><script>
 	    <script type="text/javascript" src="slider-images/js/gallery.js"></script>
         <script type="text/javascript" src="js/user.js"></script>
+        <script type="text/javascript" src="js/modif_compte.js"></script>
 	</body>
 
 </html>
