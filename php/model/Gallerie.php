@@ -1,4 +1,4 @@
-<?php/*** @author Thomas Allam / Romain Semler** @file Gallerie.php** @date 25/02/2016** @brief Classe chargé de récupérer une gallerie et ses images.*/
+<?php /*** @author Thomas Allam / Romain Semler** @file Gallerie.php** @date 25/02/2016** @brief Classe chargé de récupérer une gallerie et ses images.*/
 	class Gallerie {
 
 		public $bdd;
