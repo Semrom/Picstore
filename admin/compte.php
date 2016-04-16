@@ -3,7 +3,7 @@
   if (!isset($_SESSION['admin'])) {
     echo '<center><h1>ERREUR FATALE</h1><br /><a href="index.php">Retour</a></center>';
   } else {?>
-<?php	error_reporting(E_ALL);	ini_set('display_errors', '1');?>
+
 <!DOCTYPE html>
 <html>
     <head>
