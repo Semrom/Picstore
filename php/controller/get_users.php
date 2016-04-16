@@ -1,0 +1,1 @@
+<?php 	/* Inclusion de la classe General pour la récupération des données de la base */	require_once "../php/model/User.php";		/* Inclusion du fichier de connexion à la BD */	include_once "../php/controller/connect-bd.php";	$users = new User($bdd);	$data = $users->getAllUsers();?>
