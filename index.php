@@ -55,13 +55,13 @@
 	            </div>
 	        </form>
 	        <div class="centrer">
-	            <a href="#">Recherche avancée</a>
+	            <a href="recherche.php">Recherche avancée</a>
 	        </div>
 	    </div>
 
 	    <!-- SECTION GALLERIE IMAGES -->
 	    <section>
-	        <div class="container">
+	        <div class="container" id="slider">
 	            <div class="content">
 	                <div id="rg-gallery" class="rg-gallery">
 	                    <div class="rg-thumbs">
@@ -71,79 +71,7 @@
 	                                <span class="es-nav-next">Suivant</span>
 	                            </div>
 	                            <div class="es-carousel">
-	                                <ul>
-	                                    <li>
-	                                        <a href="#"><img src="http://numerik.blogspirit.com/media/01/00/1498064827.gif" data-large="http://numerik.blogspirit.com/media/01/00/1498064827.gif" alt="image01" data-description="TITRE DE L'IMAGE" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="http://image.blingee.com/images17/content/output/000/000/000/667/589841183_1865656.gif" data-large="http://image.blingee.com/images17/content/output/000/000/000/667/589841183_1865656.gif" alt="image02" data-description="A plaintful story from a sistering vale" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="http://tv5.ca/media/98y5tdwaxu8l5r/2000X1125/00555059.jpg?t=3fe18c0d9bea244e91153c0503bcd108" data-large="http://tv5.ca/media/98y5tdwaxu8l5r/2000X1125/00555059.jpg?t=3fe18c0d9bea244e91153c0503bcd108" alt="image03" data-description="A plaintful story from a sistering vale" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/4.jpg" data-large="slider-images/images/4.jpg" alt="image04" data-description="My spirits to attend this double voice accorded" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/5.jpg" data-large="slider-images/images/5.jpg" alt="image05" data-description="And down I laid to list the sad-tuned tale" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/6.jpg" data-large="slider-images/images/6.jpg" alt="image06" data-description="Ere long espied a fickle maid full pale" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/7.jpg" data-large="slider-images/images/7.jpg" alt="image07" data-description="Tearing of papers, breaking rings a-twain" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/8.jpg" data-large="slider-images/images/8.jpg" alt="image08" data-description="Storming her world with sorrow's wind and rain" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/9.jpg" data-large="slider-images/images/9.jpg" alt="image09" data-description="Upon her head a platted hive of straw" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/10.jpg" data-large="slider-images/images/10.jpg" alt="image10" data-description="Which fortified her visage from the sun" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/11.jpg" data-large="slider-images/images/11.jpg" alt="image11" data-description="Whereon the thought might think sometime it saw" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/12.jpg" data-large="slider-images/images/12.jpg" alt="image12" data-description="The carcass of beauty spent and done" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/13.jpg" data-large="slider-images/images/13.jpg" alt="image13" data-description="Time had not scythed all that youth begun" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/14.jpg" data-large="slider-images/images/14.jpg" alt="image14" data-description="Nor youth all quit; but, spite of heaven's fell rage" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/15.jpg" data-large="slider-images/images/15.jpg" alt="image15" data-description="Some beauty peep'd through lattice of sear'd age" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/16.jpg" data-large="slider-images/images/16.jpg" alt="image16" data-description="Oft did she heave her napkin to her eyne" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/17.jpg" data-large="slider-images/images/17.jpg" alt="image17" data-description="Which on it had conceited characters" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/18.jpg" data-large="slider-images/images/18.jpg" alt="image18" data-description="Laundering the silken figures in the brine" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/19.jpg" data-large="slider-images/images/19.jpg" alt="image19" data-description="That season'd woe had pelleted in tears" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/20.jpg" data-large="slider-images/images/20.jpg" alt="image20" data-description="And often reading what contents it bears" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/21.jpg" data-large="slider-images/images/21.jpg" alt="image21" data-description="As often shrieking undistinguish'd woe" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/22.jpg" data-large="slider-images/images/22.jpg" alt="image22" data-description="In clamours of all size, both high and low" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/23.jpg" data-large="slider-images/images/23.jpg" alt="image23" data-description="Sometimes her levell'd eyes their carriage ride" /></a>
-	                                    </li>
-	                                    <li>
-	                                        <a href="#"><img src="slider-images/images/thumbs/24.jpg" data-large="slider-images/images/24.jpg" alt="image24" data-description="As they did battery to the spheres intend" /></a>
-	                                    </li>
+	                                <ul>	                                	<?php include_once('php/view/show_images.php'); ?>
 	                                </ul>
 	                            </div>
 	                        </div>
@@ -156,14 +84,14 @@
 	    <!-- SECTION COMMENTAIRES -->
 	    <section>
 	        <div class="container">
-	            <div class="col-lg-12 centrer">
-	                <div class="col-lg-2">
-	                    <div class="well well-sm">
+	            <div class="col-lg-12 centrer">	            	<div class="col-lg-4">	            	    <div class="well well-sm">	            	        <p id="auteur"></p>	            	    </div>	            	</div>
+	                <div class="col-lg-2 col-lg-offset-6">
+	                    <div class="well well-sm" id="like-zone">
 	                        <?php if (isset($_SESSION['user'])) { ?>
-	                        <a href="#">Aimer l'image</a>
-	                        <span class="badge">30</span>
+	                        <a href="index.php#slider" id="aimer" <?php echo 'data-user="' . $_SESSION['user']['id_user'] . '"'; ?>></a>
+	                        <span class="badge" id="nb-jaime"></span>
 	                        <?php } else { ?>
-	                        <p>30 J'aime</p>
+	                        <p><span id="nb-jaime"></span> J'aime</p>
 	                        <?php } ?>
 	                    </div>
 	                </div>
@@ -178,7 +106,7 @@
 	    <script type="text/javascript" src="slider-images/js/jquery.tmpl.min.js"></script>
 	    <script type="text/javascript" src="slider-images/js/jquery.easing.1.3.js"></script>
 	    <script type="text/javascript" src="slider-images/js/jquery.elastislide.js"></script>
-	    <script type="text/javascript" src="slider-images/js/gallery.js"></script>
+	    <script type="text/javascript" src="slider-images/js/gallery.js"></script>	    <script type="text/javascript" src="js/main.js"></script>
 	</body>
 
 </html>

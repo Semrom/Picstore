@@ -1,5 +1,5 @@
-$(function() {
-	// ======================= imagesLoaded Plugin ===============================
+$(function() {		/* RÉCUPÈRE LES PARAMÈTRES DE L'URL */		function getUrlParameter(sParam)	{	    var sPageURL = window.location.search.substring(1);	    var sURLVariables = sPageURL.split('&');	    for (var i = 0; i < sURLVariables.length; i++)	    {	        var sParameterName = sURLVariables[i].split('=');	        if (sParameterName[0] == sParam)	        {	            return sParameterName[1];	        }	    }	    	    return "FAIL";	}		/* SAVOIR SI UN UTILISATEUR A DÉJÀ AIMÉ L'IMAGE COURANTE */		function dejaAimer(user, id) {				$.ajax({			url: 'php/controller/aimer_operation.php',			type: 'POST',			data: "id_usr=" + user + "&id_img=" + id + "&op=verif",			success: function(data) {				if (data.success) {					$('#aimer').text("Je n'aime plus");					$('#aimer').attr('data-op', 'dislike');									} else {					$('#aimer').text("Aimer l'image");					$('#aimer').attr('data-op', 'like');				}			},			error: function(data) {				alert("Erreur lors de l'envoi des données en Ajax (VERIF AIMER).");			}		});	}	
+	/* ======================= imagesLoaded Plugin ===============================
 	// Commentaires français : Romain Semler
 
 	// https://github.com/desandro/imagesloaded
@@ -12,7 +12,7 @@ $(function() {
 	//  this is the container
 
 	// original: mit license. paul irish. 2010.
-	// contributors: Oren Solomianik, David DeSandro, Yiannis Chatzikonstantinou
+	// contributors: Oren Solomianik, David DeSandro, Yiannis Chatzikonstantinou*/
 
 	$.fn.imagesLoaded = function( callback ) {
 	var $images = this.find('img'),
@@ -59,20 +59,20 @@ $(function() {
 	itemsCount = $items.length;
 
 	// Création de l'objet "Gallery"
-	Gallery	= (function() {
+	Gallery	= (function() {				var imageEnCours = getUrlParameter('img');		
 		// ID de l'item courant
 		var current	= 0,
 		// Mode du slider : carousel || fullview
 		mode = 'carousel',
 		// Contrôle si une image est en cours de chargement
-		anim = false,
+		anim = false,		
 		// Méthode d'initialisation de la gallerie
 		// Contient des méthodes nécessaires au
 		// fonctionnement de la gallerie
 		init = function() {
-
+								if (imageEnCours != "FAIL" && imageEnCours < itemsCount) {					current = imageEnCours;				}					
 				// Image en cas de préhargement des images et appel du callback
-				$items.add('<img src="images/ajax-loader.gif"/><img src="images/black.png"/>').imagesLoaded( function() {
+				$items.add('<img src="img/ajax-loader.gif"/><img src="img/black.png"/>').imagesLoaded( function() {
 
 				// Ajout des options d'affichage de la gallerie
 				_addViewModes();
@@ -81,7 +81,7 @@ $(function() {
 				// pour le grand format d'image
 				_addImageWrapper();
 
-				// Affichage de la première image
+				// Affichage de la première image ou de l'image indiquée en paramètre.
 				_showImage( $items.eq( current ) );
 
 			});
@@ -106,7 +106,7 @@ $(function() {
 						// Affichage de l'image lors du clic
 						_showImage($item);
 						// Changement de l'item courant
-						current	= $item.index();
+						current	= $item.index();												/* Mémoriser dans l'URL l'id de l'image */						history.pushState('data', '', 'http://picstore.16mb.com/index.php?img=' + current);
 					}
 				});
 
@@ -229,17 +229,14 @@ $(function() {
 					// Sinon décrémenter le compteur de l'index courant
 					else
 						--current;
-				}
-
+				}				
 				// Enfin, afficher l'image correspondant
 				// à l'index courant
 				_showImage( $items.eq( current ) );
-
 			},
 			// Méthode d'affichage de l'image
 			// selon l'item correspondant
-			_showImage = function( $item ) {
-
+			_showImage = function( $item ) {								/* Mémoriser dans l'URL l'id de l'image */				history.pushState('data', '', 'http://picstore.16mb.com/index.php?img=' + current);				
 				var $loader	= $rgGallery.find('div.rg-loading').show();
 
 				$items.removeClass('selected');
@@ -247,12 +244,11 @@ $(function() {
 
 				var $thumb = $item.find('img'),
 					largesrc = $thumb.data('large'),
-					title	= $thumb.data('description');
+					title = $thumb.data('description'),					author = $thumb.data('author'),					id = $thumb.data('id'),					jaime = $thumb.data('jaime');									$('#aimer').attr('data-img', id);								var user = $('#aimer').data('user');								/* SAVOIR SI L'UTILISATEUR A DEJA AIME L'IMAGE */				dejaAimer(user, id);								$('#auteur').text("Mis en ligne par " + author);				$('#nb-jaime').text(jaime);
 
 				$('<img/>').load( function() {
 
-					$rgGallery.find('div.rg-image').empty().append('<a href="#"><img src="' + largesrc + '"/></a>');
-
+					$rgGallery.find('div.rg-image').empty().append('<a href="image.php?id=' + id + '&img=' + current + '"><img src="' + largesrc + '"/></a>');					
 					if( title )
 						$rgGallery.find('div.rg-caption').show().children('p').empty().text( title );
 
@@ -266,7 +262,6 @@ $(function() {
 					anim = false;
 
 				}).attr( 'src', largesrc );
-
 			},
 			// Méthode d'ajout d'un item (d'une image)
 			// à la gallerie.
@@ -293,5 +288,5 @@ $(function() {
 	var $new  = $('<li><a href="#"><img src="slider-imagesimages/thumbs/1.jpg" data-large="slider-images/images/1.jpg" alt="image01" data-description="From off a hill whose concave womb reworded" /></a></li>');
 	Gallery.addItems( $new );
 
-	*/
+	*/	
 });
