@@ -44,7 +44,7 @@
 
           <div class="centrer">
 	            <h2>Inscrit le : <?php echo $_SESSION['user']['date_inscription_user']; ?></h2>
-	        </div>
+	        </div>	        	        <!-- MODIFICATION INFO -->	        <div id="bouton-modif" class="centrer">	        	<a href="#" class="btn btn-primary" id="boutonText"></a>	        </div>	        <div id="modif-container" class="container">				<form class="form-horizontal">				  	<fieldset>				    	<legend>Changer mon mot de passe :</legend>				    	<div class="form-group">				      		<label class="col-lg-2 control-label" for="inputPassword">Mot de passe :</label>				      		<div class="col-lg-10">				        		<input type="password" class="form-control" id="inputPassword" placeholder="Password">				      		</div>				    	</div>				    	<div class="form-group">				      		<label class="col-lg-2 control-label" for="inputPassword">Confirmation :</label>				      		<div class="col-lg-10">				        		<input type="password" class="form-control" id="inputPassword" placeholder="Password">				      		</div>				    	</div>				    	<legend>Changer mon avatar :</legend>				    	<div class="form-group">				      		<label class="col-lg-2 control-label" for="inputFile">Avatar :</label>				      		<div class="col-lg-10">				        		<input type="file" class="form-control" id="inputFile" placeholder="Choisir mon nouvel avatar...">				      		</div>				    	</div>				    	<div id="btn-valid-modif" class="centrer">							<button type="reset" class="btn btn-default">Annuler</button>							<button type="submit" class="btn btn-primary">Valider</button>						</div>					</fieldset>				  				</form>	        </div>
       </div>
       <?php } else { ?>      	<div class="page-header" id="banner">      		    <div class="row">      		        <div class="col-lg-12 col-md-7 col-sm-6" id="sous-titre-bloc">      		        	<p id="sous-titre-text"></p>      		        </div>      		    </div>      		</div>      	</div>      	          <div class="centrer">                <h1>Erreur : connectez-vous !</h1><br />              <a href="./" class="btn btn-info">Retour</a>          </div>
       <?php } ?>
@@ -53,7 +53,7 @@
 	    <?php include_once('php/view/modules/footer.php'); ?>
 
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-	    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	    <script type="text/javascript" src="js/bootstrap.min.js"></script>	    <script type="text/javascript" src="js/modif_compte.js"></script>
 	</body>
 
 </html>
