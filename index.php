@@ -60,8 +60,8 @@
 	    </div>
 
 	    <!-- SECTION GALLERIE IMAGES -->
-	    <section>
-	        <div class="container" id="slider">
+	    <section id="slider">
+	        <div class="container">
 	            <div class="content">
 	                <div id="rg-gallery" class="rg-gallery">
 	                    <div class="rg-thumbs">
@@ -88,8 +88,7 @@
 	                <div class="col-lg-2 col-lg-offset-6">
 	                    <div class="well well-sm" id="like-zone">
 	                        <?php if (isset($_SESSION['user'])) { ?>
-	                        <a href="index.php#slider" id="aimer" <?php echo 'data-user="' . $_SESSION['user']['id_user'] . '"'; ?>></a>
-	                        <span class="badge" id="nb-jaime"></span>
+	                        <span id="aimer" <?php echo 'data-user="' . $_SESSION['user']['id_user'] . '"'; ?>></span>	                        <span class="badge" id="nb-jaime"></span>
 	                        <?php } else { ?>
 	                        <p><span id="nb-jaime"></span> J'aime</p>
 	                        <?php } ?>
