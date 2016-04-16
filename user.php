@@ -1,4 +1,4 @@
-<?php	session_start();?><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 	<head>
 	    <title>Picstore</title>
@@ -42,7 +42,7 @@
 
  			<!-- MODIFICATION INFO -->
 	        <div id="bouton-modif" class="centrer">
-	        	<a href="#" class="btn btn-primary" id="boutonText"></a>
+	        	<a href="#" class="btn btn-primary" onclick="displayPanelModif()">Modifier</a>
 	        </div>
 
 	        <div id="modif-container" class="container">
