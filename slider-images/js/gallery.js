@@ -1,4 +1,4 @@
-$(function() {		/* RÉCUPÈRE LES PARAMÈTRES DE L'URL */		function getUrlParameter(sParam)	{	    var sPageURL = window.location.search.substring(1);	    var sURLVariables = sPageURL.split('&');	    for (var i = 0; i < sURLVariables.length; i++)	    {	        var sParameterName = sURLVariables[i].split('=');	        if (sParameterName[0] == sParam)	        {	            return sParameterName[1];	        }	    }	    	    return "FAIL";	}		/* SAVOIR SI UN UTILISATEUR A DÉJÀ AIMÉ L'IMAGE COURANTE */		function dejaAimer(user, id) {				$.ajax({			url: 'php/controller/aimer_operation.php',			type: 'POST',			data: "id_usr=" + user + "&id_img=" + id + "&op=verif",			success: function(data) {				if (data.success) {					$('#aimer').text("Je n'aime plus");					$('#aimer').attr('data-op', 'dislike');									} else {					$('#aimer').text("Aimer l'image");					$('#aimer').attr('data-op', 'like');				}			},			error: function(data) {				alert("Erreur lors de l'envoi des données en Ajax (VERIF AIMER).");			}		});	}	
+$(function() {		/* RÉCUPÈRE LES PARAMÈTRES DE L'URL */		function getUrlParameter(sParam)	{	    var sPageURL = window.location.search.substring(1);	    var sURLVariables = sPageURL.split('&');	    for (var i = 0; i < sURLVariables.length; i++)	    {	        var sParameterName = sURLVariables[i].split('=');	        if (sParameterName[0] == sParam)	        {	            return sParameterName[1];	        }	    }	    	    return "FAIL";	}		/* SAVOIR SI UN UTILISATEUR A DÉJÀ AIMÉ L'IMAGE COURANTE */		function dejaAimer(user, id) {				$.ajax({			url: 'php/controller/aimer_operation.php',			type: 'POST',			data: "id_usr=" + user + "&id_img=" + id + "&op=verif",			success: function(data) {				if (data.success) {					$('#aimer').text("Je n'aime plus");					$('#aimer').attr('data-op', 'dislike');									} else {					$('#aimer').text("Aimer l'image");					$('#aimer').attr('data-op', 'like');				}			},			error: function(data) {				alert("Erreur du serveur, merci de réessayer (Code : 001).");			}		});	}	
 	/* ======================= imagesLoaded Plugin ===============================
 	// Commentaires français : Romain Semler
 
@@ -106,7 +106,7 @@ $(function() {		/* RÉCUPÈRE LES PARAMÈTRES DE L'URL */		function getUrlP
 						// Affichage de l'image lors du clic
 						_showImage($item);
 						// Changement de l'item courant
-						current	= $item.index();												/* Mémoriser dans l'URL l'id de l'image */						history.pushState('data', '', 'http://picstore.16mb.com/index.php?img=' + current);
+						current	= $item.index();												/* Mémoriser dans l'URL l'id de l'image */						history.pushState('data', '', 'http://localhost:8888/Picstore/?img=' + current);
 					}
 				});
 
@@ -236,7 +236,7 @@ $(function() {		/* RÉCUPÈRE LES PARAMÈTRES DE L'URL */		function getUrlP
 			},
 			// Méthode d'affichage de l'image
 			// selon l'item correspondant
-			_showImage = function( $item ) {								/* Mémoriser dans l'URL l'id de l'image */				history.pushState('data', '', 'http://picstore.16mb.com/index.php?img=' + current);				
+			_showImage = function( $item ) {								/* Mémoriser dans l'URL l'id de l'image */				history.pushState('data', '', 'http://localhost:8888/Picstore/?img=' + current);				
 				var $loader	= $rgGallery.find('div.rg-loading').show();
 
 				$items.removeClass('selected');
@@ -244,7 +244,7 @@ $(function() {		/* RÉCUPÈRE LES PARAMÈTRES DE L'URL */		function getUrlP
 
 				var $thumb = $item.find('img'),
 					largesrc = $thumb.data('large'),
-					title = $thumb.data('description'),					author = $thumb.data('author'),					id = $thumb.data('id'),					jaime = $thumb.data('jaime');									$('#aimer').attr('data-img', id);								var user = $('#aimer').data('user');								/* SAVOIR SI L'UTILISATEUR A DEJA AIME L'IMAGE */				dejaAimer(user, id);								$('#auteur').text("Mis en ligne par " + author);				$('#nb-jaime').text(jaime);
+					title = $thumb.data('description'),					author = $thumb.data('author'),					id = $thumb.data('id'),					jaime = $thumb.data('jaime'),					idAuthor = $thumb.data('author-id');									/*$('#aimer').attr('href', '');*/				$('#aimer').attr('data-img', id);								var user = $('#aimer').data('user');								/* SAVOIR SI L'UTILISATEUR A DEJA AIME L'IMAGE */				dejaAimer(user, id);								$('#auteur').html('Mis en ligne par <a href="user.php?id=' + idAuthor + '">' + author + '</a>');				$('#nb-jaime').text(jaime);
 
 				$('<img/>').load( function() {
 
