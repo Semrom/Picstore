@@ -46,7 +46,9 @@
                     <h4 class="col-xs-5 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 centrer"><?php echo 'Galeries de ' . $infos['pseudo_user']; ?></h4>
                 </div>
 
-                <div id="album-content" class="container album-content"></div>
+                <div id="album-content" class="container album-content">
+                    <img id="loading" class="centrer" src="img/ajax-loader.gif" alt="Chargement en cours...">
+                </div>
 	                <!-- Bouton +
 	                <div class="col-xs-3">
 	                    <div class="dummy"></div>

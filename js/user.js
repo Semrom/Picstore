@@ -63,11 +63,29 @@ var galeries = { // variable qui stock toutes les galeries disponibles a affiche
 
 $(document).ready(function() {
     wall = new Freewall("#album-content");
-    loadWall(galeries);
-    $(".cell").one("click", function() {
-        //charger avec ajax avant
-        //prevoir les animations aprés 
-        enterGalerie(contentGalerie);
+    prepareLoadingGif();
+    $.ajax({
+        url: '../php/controller/get_galleries_and_images.php',
+        type: 'GET',
+        data: 'id_user='+ getUrlParameter(id) + '&op=Galeries' /*{
+            id_user: getUrlParameter('id'),
+            op: 'Galeries'
+        }*/,
+        dataType: 'json'
+        success: function(data) {
+            galeries = $.parseJSON(data);
+        },
+        complete: function(result, statut) {
+            loadWall(galeries);
+            $(".cell").one("click", function() {
+                //charger avec ajax avant
+                //prevoir les animations aprés 
+                enterGalerie(contentGalerie);
+            });
+        },
+        error: function(result, statut, erreur) {
+            alert("Echec du chargement de l'image, erreur: " + erreur);
+        }
     });
 });
 
@@ -200,4 +218,29 @@ function addNewCell(title, imgLink, width, height) {
         "px;background-image: url(./img/" + imgLink + ")'>\n" +
         "<div class='layer'>" + "<span class='desc'>" + title + "</span>" + "</div>\n</div>\n";
     return temp;
+}
+
+function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) {
+            return sParameterName[1];
+        }
+    }
+
+    return "FAIL";
+}
+
+function prepareLoadingGif() {
+    $("#loading").hide();
+    $(document).ajaxStart(function() {
+        $("#loading").show();
+    });
+
+    $(document).ajaxStop(function() {
+        $("#loading").hide();
+    });
+
 }
