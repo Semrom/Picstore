@@ -17,5 +17,5 @@
 			$images = $req_imgal->fetchAll();
 			$req_imgal->closeCursor();
 			return $images;
-		}				public function deleteUserGalleries($id_user) {					$req_del = $this->bdd->prepare('DELETE FROM gallerie WHERE id_user = :id');			$req_del->execute(array('id' => $id_user));			$req_del->closeCursor();						return true;		}				/* PEUT ETRE A EFFACER !!!! */		public function getAllUserGalleries($id_user) {			$req_gal = $this->bdd->prepare('SELECT id_gallerie FROM gallerie WHERE id_user = :id');			$req_gal->execute(array('id' => $id_user));			$donnee = $req_gal->fetchAll();			$req_gal->closeCursor();						return $donnee;		}
+		}				public function deleteUserGalleries($id_user) {					$req_del = $this->bdd->prepare('DELETE FROM gallerie WHERE id_user = :id');			$req_del->execute(array('id' => $id_user));			$req_del->closeCursor();						return true;		}				public function getGalleriesForSearch($donnee) {			$req_gal = $this->bdd->prepare("SELECT id_user, nom_gallerie FROM gallerie WHERE is_public_gallerie = 1 AND is_supprimable_gallerie = 1 AND nom_gallerie LIKE :data");			$req_gal->execute(array('data' => "%" . $donnee . "%"));			$donnee = $req_gal->fetchAll();			$req_gal->closeCursor();						return $donnee;		}
 	}
