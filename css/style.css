@@ -329,5 +329,14 @@ span.glyphicon-plus {
 .loading {
     position: absolute;
     left: 50%;
-    z-index:99;
+    opacity: 0.7;
+    width:46px;
+    height:46px;
+    border-radius: 10px;
+    z-index:100;
+    background-color:rgb(0, 0, 0);
+    background-image:url('./img/ajax-loader.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment:scroll;
 }
