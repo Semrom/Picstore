@@ -329,4 +329,5 @@ span.glyphicon-plus {
 .loading {
     position: absolute;
     left: 50%;
+    z-index:99;
 }
