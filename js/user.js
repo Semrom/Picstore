@@ -74,12 +74,12 @@ $(document).ready(function() {
         data: 'id_user=' + getUrlParameter('id') + '&op=Galeries',
         dataType: 'json',
         success: function(data) {
-            galeries = $.parseJSON(data);
+            galeries = data;
         },
         complete: function(result, statut) {
             loadWall(galeries);
             $(".cell").one("click", function() {
-                ajaxEnterGalerie();
+                ajaxEnterGalerie($(this));
             });
         },
         error: function(result, statut, erreur) {
@@ -128,7 +128,7 @@ function leaveGalerie(contents) {
         loadWall(contents);
         $(".cell").one("click", function() {
             /* charger avec ajax le contenue de la galerie dans contentGalerie avant */
-            ajaxEnterGalerie();
+            ajaxEnterGalerie($(this));
         });
     });
 
@@ -236,24 +236,22 @@ function prepareLoadingGif() {
     $("#loading").hide();
     $(document).ajaxStart(function() {
         $("#loading").show();
-        alert("ajax en cours");
     });
 
     $(document).ajaxStop(function() {
         $("#loading").hide();
-        alert("ajax terminé");
     });
 
 }
 
-function ajaxEnterGalerie(){
+function ajaxEnterGalerie(cell){
     $.ajax({
         url: 'php/controller/get_galleries_and_images.php',
         type: 'POST',
-        data: 'id_gal=' + $(this).data("id_galerie") + '&op=contentGalerie',
+        data: 'id_gal=' + cell.data("id_galerie") + '&op=contentGalerie',
         dataType:'json',
         success: function(data) {
-            contentGalerie = $.parseJSON(data);
+            contentGalerie = data;
         },
         complete: function(result, statut) {
             enterGalerie(contentGalerie);
