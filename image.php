@@ -78,13 +78,13 @@
             <!-- AUTRES COMMENTAIRES -->
             <div id="com-container-other" class="container">
                 <div class="centrer">
-                    <button class="btn btn-default"></button>
+                    <button id="masquer-com" class="btn btn-default"></button>
                 </div>
                 <div id="com">
                     <!-- PREMIER COMMENTAIRE -->
                     <div class="col-lg-12">
                         <!-- INFO SUR L'AUTEUR DU COMMENTAIRE (PSEUDO & AVATAR) -->
-                        <div class="col-lg-1">1
+                        <div class="col-lg-1">
                             <div class="ratio img-responsive img-circle" style="background-image:url(img/FatGuyShootingRed.gif)"></div>
                             <h4 class="centrer">Pseudo</h4>
                         </div>
