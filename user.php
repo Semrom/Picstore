@@ -37,7 +37,7 @@
 	        </div>
 
 	        <div id="nb_like_user" class="centrer">
-	            <h3><?php echo $nbJaime . ' \"J\'aime\"'; ?></h3>
+	            <h3><?php echo $nbJaime . ' J\'aime'; ?></h3>
 	        </div>
 
 	        <!-- GRILLE DE GALLERIES -->
