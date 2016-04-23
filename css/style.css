@@ -1,1 +1,332 @@
-/*** CORPS DE PAGE ***/html {	position: relative;	min-height: 100%;}body {	margin-bottom: 60px;}/*** MODULES ***/#clear {	clear: both;	height: 60px;}footer {    background-color: rgb(48, 48, 48);    font-size: 15px;    padding: 1%;    text-align: center;    height: 60px;    width: 100%;    bottom: 0;    position: absolute;}.dropdown-menu {    padding: 15px;    min-width: 200px;}/*** PAGE ACCUEIL ***/#sous-titre-bloc {    text-align: center;}#sous-titre-text {    font-size: 25px;    margin-top: 5%;    margin-bottom: 0%;}#formulaire-recherche {    margin-bottom: 8%;}#recherche-accueil {    background-color: rgb(34, 34, 34);    border: 1px solid white;    border-radius: 20px;    color: white;    font-size: 17px;    padding: 1%;    width: 70%;}#aimer {	cursor: pointer;}#aimer:hover {	cursor: pointer;	color: #0ce3ac;	text-decoration: underline;}#resultats-recherche {		border: 5px #375a7f solid;	border-radius: 20px;	padding: 1%;	margin:  2%;	overflow: scroll;	width: 95%;}.decale {	margin-left: 5%;}.titre-recherche {	font-weight: bold;	margin: 2%;}.cellule {	text-align: center;	padding: 5px;}.celluleGal {	text-align: center;	padding: 5px;	border-right: 2px solid white;}/*** FORMULAIRE CONNEXION ***/#error-zone-connect {	display: none;	font-size: 16px;	margin-left: auto;	margin-right: auto;}#error-zone-connect {	display: none;	font-size: 18px;	margin-left: auto;	margin-right: auto;}/*** PAGE INSCRIPTION ET CHANGEMENT INFOS PROFIL***/#form-signup {	border: 5px #375a7f solid;	border-radius: 20px;	padding: 2%}#ok-zone {	display: none;	font-size: 20px;}#error-zone {	display: none;	font-size: 18px;	margin-left: auto;	margin-right: auto;}/*** PAGE UPLOAD ***/#consult-image {	color: white;	font-weight: bold;}#error-zone-upload {	display: none;}#ok-zone-upload {	display: none;}#inputUpload {	height: auto;}#inputDescription {	height: 100px;}/*** MODIFICATION INFO ***/#bouton-modif {    margin-bottom: 20px;}#modif-container {    background-color: rgba(0, 0, 0, 9);    border: 5px #375a7f solid;    border-radius: 20px;    /*width: 50%;    height: 40%;*/    margin-bottom: 2%;    padding: 2%}/*** IMAGE ***/image-container {   background-color: rgba(0, 0, 0, 9);   border: 5px #375a7f solid;   border-radius: 20px;   margin-top: 2%;   padding: 2%}com-container {   background-color: rgba(0, 0, 0, 9);   border-radius: 20px;   margin-top: 2%;   padding: 2%}com-container-other {   background-color: rgba(0, 0, 0, 9);   border-radius: 20px;   margin-top: 2%;   padding: 2%;}/*** AVATAR ***/#avatar-container {    margin-top: 20px;    width: 22%;}@media (max-width: 754px) {    #avatar-container {        width: 30%;    }}.img-circle {    border-radius: 50%;}.ratio {    background-position: center center;    background-repeat: no-repeat;    background-size: cover;    height: 0;    padding-bottom: 100%;    position: relative;    width: 100%;}.img-responsive {    display: block;    height: auto;    max-width: 100%;}/*** GALLERIE PAGE UTILISATEUR ***/.album{    /*background-color: rgb(48, 48, 48);*/    background:transparent url(../slider-images/images/black.png) repeat top left;    box-shadow: 0px 1px 3px rgba(0,0,0,0.9);    border-radius:10px;    padding-top:20px;    padding-bottom:20px;    padding-left:0px;    padding-right:0px;}.album-content{    padding-bottom:20px;}.cell {	background:rgba(0,0,0,0.3); !important	background-position: center center;	background-repeat: no-repeat;	background-size: cover;	position: absolute;	background-color: #222;    margin-top:20px;    margin-left:15px;    /** fade de l'image **/    /*opacity:1;    transition:opacity .10s ease-in-out;    -moz-transition: opacity .10s ease-in-out;    -webkit-transition:opacity .10s ease-in-out;*/}.cell:hover{    border-style: solid;    border-color: #AAAAAA;    border-width: 2px;   /* opacity:0.2 !important;*/}.cell:hover span{	  color: #ffffff;  text-shadow: 0px 2px 2px rgba(0,0,0,0.8); !important}.layer{   height:100%;   width:100%}.layer:hover{    background-color:rgba(0,0,0,0.5);}.desc {  position: absolute;  width: 100%;  margin-top: 75px;  text-decoration: none;  text-align: center;  /*font-family: Georgia, serif;*/  /*font-style: italic;*/  font-size: 14px;  line-height: 1.4;  color: transparent;  text-shadow: 0px 2px 2px rgba(0,0,0,0);  transition: all ease-in 0.3s; !important}.add {    display: flex;    align-items: center;    justify-content: center;}span.glyphicon-plus {    font-size: 5em;}/*** UTILITAIRES ***/.centrer {    text-align: center;}
+/*** CORPS DE PAGE ***/
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+
+/*** MODULES ***/
+
+#clear {
+    clear: both;
+    height: 60px;
+}
+
+footer {
+    background-color: rgb(48, 48, 48);
+    font-size: 15px;
+    padding: 1%;
+    text-align: center;
+    height: 60px;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+
+.dropdown-menu {
+    padding: 15px;
+    min-width: 200px;
+}
+
+
+/*** PAGE ACCUEIL ***/
+
+#sous-titre-bloc {
+    text-align: center;
+}
+
+#sous-titre-text {
+    font-size: 25px;
+    margin-top: 5%;
+    margin-bottom: 0%;
+}
+
+#formulaire-recherche {
+    margin-bottom: 8%;
+}
+
+#recherche-accueil {
+    background-color: rgb(34, 34, 34);
+    border: 1px solid white;
+    border-radius: 20px;
+    color: white;
+    font-size: 17px;
+    padding: 1%;
+    width: 70%;
+}
+
+#aimer {
+    cursor: pointer;
+}
+
+#aimer:hover {
+    cursor: pointer;
+    color: #0ce3ac;
+    text-decoration: underline;
+}
+
+#resultats-recherche {
+    border: 5px #375a7f solid;
+    border-radius: 20px;
+    padding: 1%;
+    margin: 2%;
+    overflow: scroll;
+    width: 95%;
+}
+
+.decale {
+    margin-left: 5%;
+}
+
+.titre-recherche {
+    font-weight: bold;
+    margin: 2%;
+}
+
+.cellule {
+    text-align: center;
+    padding: 5px;
+}
+
+.celluleGal {
+    text-align: center;
+    padding: 5px;
+    border-right: 2px solid white;
+}
+
+
+/*** FORMULAIRE CONNEXION ***/
+
+#error-zone-connect {
+    display: none;
+    font-size: 16px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#error-zone-connect {
+    display: none;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*** PAGE INSCRIPTION ET CHANGEMENT INFOS PROFIL***/
+
+#form-signup {
+    border: 5px #375a7f solid;
+    border-radius: 20px;
+    padding: 2%
+}
+
+#ok-zone {
+    display: none;
+    font-size: 20px;
+}
+
+#error-zone {
+    display: none;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/*** PAGE UPLOAD ***/
+
+#consult-image {
+    color: white;
+    font-weight: bold;
+}
+
+#error-zone-upload {
+    display: none;
+}
+
+#ok-zone-upload {
+    display: none;
+}
+
+#inputUpload {
+    height: auto;
+}
+
+#inputDescription {
+    height: 100px;
+}
+
+
+/*** MODIFICATION INFO ***/
+
+#bouton-modif {
+    margin-bottom: 20px;
+}
+
+#modif-container {
+    background-color: rgba(0, 0, 0, 9);
+    border: 5px #375a7f solid;
+    border-radius: 20px;
+    /*width: 50%;
+    height: 40%;*/
+    margin-bottom: 2%;
+    padding: 2%
+}
+
+
+/*** IMAGE ***/
+
+image-container {
+    background-color: rgba(0, 0, 0, 9);
+    border: 5px #375a7f solid;
+    border-radius: 20px;
+    margin-top: 2%;
+    padding: 2%
+}
+
+com-container {
+    background-color: rgba(0, 0, 0, 9);
+    border-radius: 20px;
+    margin-top: 2%;
+    padding: 2%
+}
+
+com-container-other {
+    background-color: rgba(0, 0, 0, 9);
+    border-radius: 20px;
+    margin-top: 2%;
+    padding: 2%;
+}
+
+
+/*** AVATAR ***/
+
+#avatar-container {
+    margin-top: 20px;
+    width: 22%;
+}
+
+@media (max-width: 754px) {
+    #avatar-container {
+        width: 30%;
+    }
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.ratio {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 0;
+    padding-bottom: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.img-responsive {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+
+/*** GALLERIE PAGE UTILISATEUR ***/
+
+.album {
+    /*background-color: rgb(48, 48, 48);*/
+    background: transparent url(../slider-images/images/black.png) repeat top left;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.album-content {
+    padding-bottom: 20px;
+}
+
+.cell {
+    background: rgba(0, 0, 0, 0.3);
+    !important background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    background-color: #222;
+    margin-top: 20px;
+    margin-left: 15px;
+    /** fade de l'image **/
+    /*opacity:1;
+    transition:opacity .10s ease-in-out;
+    -moz-transition: opacity .10s ease-in-out;
+    -webkit-transition:opacity .10s ease-in-out;*/
+}
+
+.cell:hover {
+    border-style: solid;
+    border-color: #AAAAAA;
+    border-width: 2px;
+    /* opacity:0.2 !important;*/
+}
+
+.cell:hover span {
+    color: #ffffff;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.8);
+    !important
+}
+
+.layer {
+    height: 100%;
+    width: 100%
+}
+
+.layer:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.desc {
+    position: absolute;
+    width: 100%;
+    margin-top: 75px;
+    text-decoration: none;
+    text-align: center;
+    /*font-family: Georgia, serif;*/
+    /*font-style: italic;*/
+    font-size: 14px;
+    line-height: 1.4;
+    color: transparent;
+    text-shadow: 0px 2px 2px rgba(0, 0, 0, 0);
+    transition: all ease-in 0.3s;
+    !important
+}
+
+.add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span.glyphicon-plus {
+    font-size: 5em;
+}
+
+
+/*** UTILITAIRES ***/
+
+.centrer {
+    text-align: center;
+}
+
+.loading {
+    position: absolute;
+    left: 50%;
+}

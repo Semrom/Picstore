@@ -47,7 +47,7 @@
                 </div>
 
                 <div id="album-content" class="container album-content">
-                    <img id="loading" class="centrer" src="img/ajax-loader.gif" alt="Chargement en cours...">
+                    <img id="loading" class="centrer loading" src="img/ajax-loader.gif" alt="Chargement en cours...">
                 </div>
 	                <!-- Bouton +
 	                <div class="col-xs-3">

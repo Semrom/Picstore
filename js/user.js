@@ -173,7 +173,7 @@ function loadWall(contents) {
 
     for (var i = 0; i < contents.size; ++i) {
         if (contents == contentGalerie)
-            html += "<a href='" + contents.items[i].thumbnail + "'>\n";
+            html += "<a href='" + contents.items[i].link + "'>\n";
         if(contents.items[i].id_galerie != undefined)
             html += addNewCell(contents.items[i].title, contents.items[i].thumbnail, wallConfig.width,
                 wallConfig.height, contents.items[i].id_galerie);
@@ -214,7 +214,7 @@ function addNewCell(title, imgLink, width, height, id_galerie) {
     if (id_galerie != undefined)
         temp += "data-id_galerie='" + id_galerie + "'";
     temp += " style='width:" + width + "px; height:" + height +
-        "px;background-image: url(./img/" + imgLink + ")'>\n" +
+        "px;background-image: url(./" + imgLink + ")'>\n" +
         "<div class='layer'>" + "<span class='desc'>" + title + "</span>" + "</div>\n</div>\n";
     return temp;
 }
