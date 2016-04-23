@@ -6,7 +6,8 @@ html {
 }
 
 body {
-    margin-bottom: 60px;    background: #1F1F1F url(../img/pattern.png) repeat top left;
+    margin-bottom: 60px;
+    background: #1F1F1F url(../img/pattern.png) repeat top left;
 }
 
 
@@ -181,7 +182,7 @@ footer {
 
 /*** IMAGE ***/
 
-image-container {
+#image-container {
     background-color: rgba(0, 0, 0, 9);
     border: 5px #375a7f solid;
     border-radius: 20px;
@@ -189,18 +190,34 @@ image-container {
     padding: 2%
 }
 
-com-container {
+#com-container {
     background-color: rgba(0, 0, 0, 9);
     border-radius: 20px;
     margin-top: 2%;
     padding: 2%
 }
 
-com-container-other {
+#com-container-other {
     background-color: rgba(0, 0, 0, 9);
     border-radius: 20px;
     margin-top: 2%;
     padding: 2%;
+}
+
+#image-info {
+    margin-top: 2%;
+}
+
+#button-pub {
+    margin-top: 3.5%;
+}
+
+#ecrire-com {
+    margin-top: 2%;
+}
+
+#com {
+    margin-top: 3%;
 }
 
 

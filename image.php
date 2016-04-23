@@ -33,18 +33,17 @@
                 <!--<div id="bouton-retour" class="#">
                     <a href="user.php" class="btn btn-default">Retour</a>
                 </div>-->
-                <img id="image-courante" src="img/test.jpg" class="img-responsive col-lg-12" >
+                <img id="image-courante" src="img/test3.jpg" class="img-responsive center-block" >
                 <div id="image-info" class="col-lg-12">
-                    <div id="image-titre" class="col-lg-9">
+                    <div id="image-titre" class="col-lg-10">
                         <h2>Titre image test</h2>
                     </div>
-                    <div id="image-like-fav" class="col-lg-3">
-                        <div id="nb-like" class="col-lg-2">
+                    <div class="col-lg-2">
+                        <div id="nb-like" class="col-lg-1">
                             <h4>56</h4>
                         </div>
-                        <div id="like-fav-button" class="clo-lg-2">
-                            <a href="#" class="btn btn-info">J'aime</a>
-                            <a href="#" class="btn btn-primary">Favoris</a>
+                        <div id="like-button" class="col-lg-1">
+                            <a class="btn btn-info">J'aime</a>
                         </div>
                     </div>
                 </div>
@@ -56,8 +55,8 @@
             <!-- ECRIRE UN COMMENTAIRE -->
             <div id="com-container" class="container">
                 <form>
-                    <h3>Commentaires</h3>
-                    <div id="ecrire-com" class="col-lg-12">
+                    <h3>Commentaires :</h3>
+                    <div id="ecrire-com" class="col-lg-12 row-lg-3">
                         <div id="ecrire-com-info" class="col-lg-1">
                             <div class="ratio img-responsive img-circle" style="background-image:url(http://placekitten.com/g/400/200)"></div>
                             <h4 class="centrer">Pseudo</h4>
@@ -65,7 +64,7 @@
                         <div id="zone-ecrire-com" class="col-lg-10">
                             <textarea class="form-control" rows="3" id="textArea"></textarea>
                         </div>
-                        <div class="col-lg-1">
+                        <div id="button-pub" class="col-lg-1">
                             <button type="submit" class="btn btn-primary">Publier</button>
                         </div>
                     </div>
@@ -74,12 +73,12 @@
 
             <!-- AUTRES COMMENTAIRES -->
             <div id="com-container-other" class="container">
-                <div class="col-lg-12 col-lg-offset-9">
+                <div class="centrer">
                     <button id="masquer-com" class="btn btn-default"></button>
                 </div>
-                <div id="com" class="col-lg-12">
+                <div id="com">
                     <!-- PREMIER COMMENTAIRE -->
-                    <div id="com-1">
+                    <div id="com-1" class="col-lg-12">
                         <div id="com-info-1" class="col-lg-1">
                             <div class="ratio img-responsive img-circle" style="background-image:url(img/FatGuyShootingRed.gif)"></div>
                             <h4 class="centrer">Pseudo</h4>
@@ -87,13 +86,35 @@
                         <div id="zone-com-1" class="col-lg-9">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac velit ligula. Proin maximus nisi nec congue posuere. Sed bibendum porta sapien ut facilisis. Donec et viverra nunc, sit amet vestibulum urna. Aliquam aliquet elit nec ligula cursus condimentum. Vestibulum et orci nisl.</p>
                         </div>
-                        <div id="nb-like-com" class="col-lg-1">
-                            <h5>56</h5>
-                        </div>
-                        <div class="col-lg-1">
-                            <button type="submit" class="btn btn-info">J'aime</button>
+                        <div class="col-lg-2">
+                            <div id="nb-like-com" class="col-lg-1">
+                                <h5>56</h5>
+                            </div>
+                            <div class="col-lg-1">
+                                <button type="submit" class="btn btn-info">J'aime</button>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- 2EME COMMENTAIRE -->
+                    <div id="com-2" class="col-lg-12">
+                        <div id="com-info-2" class="col-lg-1">
+                            <div class="ratio img-responsive img-circle" style="background-image:url(img/FatGuyShootingBlue.gif)"></div>
+                            <h4 class="centrer">Pseudo</h4>
+                        </div>
+                        <div id="zone-com-2" class="col-lg-9">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ac velit ligula. Proin maximus nisi nec congue posuere. Sed bibendum porta sapien ut facilisis. Donec et viverra nunc, sit amet vestibulum urna. Aliquam aliquet elit nec ligula cursus condimentum. Vestibulum et orci nisl.</p>
+                        </div>
+                        <div class="col-lg-2">
+                            <div id="nb-like-com2" class="col-lg-1">
+                                <h5>56</h5>
+                            </div>
+                            <div class="col-lg-1">
+                                <button type="submit" class="btn btn-info">J'aime</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             
