@@ -71,7 +71,7 @@ session_start();    include_once("php/controller/modif_compte.php");
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
         <script type="text/javascript" src="js/bootstrap.min.js"></script>	    <script type="text/javascript" src="js/modif_compte.js"></script>
-        <script type="text/javascript" src="js/modif_compte.js"></script>
+        <script type="text/javascript" src="js/compte.js"></script>
     </body>
 
 </html>
