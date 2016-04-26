@@ -283,9 +283,14 @@ function initModalImage(image){
         $("select#imageVisibilityM").val("private");
     $("#imageGaleriesM").append(addGaleriesCheckboxModal(galeries.items));
 
-    var i;
-    for (i=0; i< image.size; ++i) /* check toutes les galeries ou l'image est deja presente */
-        $("#"+image.galeries.id+"Checkbox").prop('checked', true);
+    if(image.size > 0){
+        $("#imageGaleriesM").show();
+        var i;
+        for (i=0; i< image.size; ++i) /* check toutes les galeries ou l'image est deja presente */
+            $("#"+image.galeries.id+"Checkbox").prop('checked', true);
+    } else {
+        $("#imageGaleriesM").hide();
+    }
 }
 
 function addGaleriesCheckboxModal(galeriesArray, size){
