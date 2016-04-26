@@ -276,7 +276,7 @@ function initModalImage(image){
         src:image.thumbnail,
         alt:image.title
     });
-    $("#imageNbLike").text(image.nbLike);
+    $("#imageNbLikeM").text(image.nbLike);
     if(image.isPublic)
         $("select#imageVisibilityM").val("public");
     else
