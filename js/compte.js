@@ -94,6 +94,7 @@ $(document).ready(function() {
         complete: function(result, statut) {
             loadWall(galeries);
             enterClickBind();
+            modifiableClickBind();
             $("#imageWindowM").on('hidden.bs.modal',function(e){ 
                 $("#imageGalFormM").remove("label");
             });
@@ -143,6 +144,7 @@ function leaveGalerie(contents) {
         wall.fitWidth();
         loadWall(contents);
         enterClickBind();
+        modifiableClickBind();
     });
 
     $("#control-bar-album,#album-content").fadeIn();
@@ -196,7 +198,6 @@ function loadWall(contents) {
         if (contents == contentGalerie)
             html += "</a>\n"
     }
-    modifiableClickBind();
     if (contents == galeries)
         html += addPlusCell(wallConfig.width, wallConfig.height);
 
@@ -353,23 +354,12 @@ function enterClickBind() {
 }
 
 function modifiableClickBind() {
-    /*
     $(".modifiable").one("click", function(e) {
+        e.stopPropagation();
         if($(this).closest(".cell").data("id_galerie"))
             ajaxGetModifyItem($(this), "modifGal");
         else if($(this).parents(".cell").data("id_image"))
             ajaxGetModifyItem($(this), "modifImg");
-        e.stopPropagation();
         modifiableClickBind();
-    });
-    */
-
-    $(".cell").on('click', '.modifiable',function(e){
-        e.stopPropagation();
-        if($(this).closest(".cell").data("id_galerie"))
-            ajaxGetModifyItem($(this), "modifGal");
-        else if($(this).parents(".cell").data("id_image"))
-            ajaxGetModifyItem($(this), "modifImg");
-     /*   modifiableClickBind();*/
     });
 }
