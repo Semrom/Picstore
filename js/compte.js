@@ -26,47 +26,47 @@ var galeries = { /* variable qui stock toutes les galeries disponibles a affiche
     contentGalerie = { /*variable qui stock le contenue d'une galerie , a charger avec ajax avant de l'utiliser */
         "title": "Something",
         "items": [{
-            "id_image":0,
+            "id_img":0,
             "title": "Lourdeur",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
-            "id_image":1,
+            "id_img":1,
             "title": "Epic",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
-            "id_image":2,
+            "id_img":2,
             "title": "MRW ta geule",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
-            "id_image":3,
+            "id_img":3,
             "title": "Red",
             "link": "FatGuyShootingRed.gif",
             "thumbnail": "FatGuyShootingRed.gif"
         }, {
-            "id_image":4,
+            "id_img":4,
             "title": "Blue",
             "link": "FatGuyShootingBlue.gif",
             "thumbnail": "FatGuyShootingBlue.gif"
         }, {
-            "id_image":5,
+            "id_img":5,
             "title": "who",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
-            "id_image":6,
+            "id_img":6,
             "title": "piouu",
             "link": "test2.jpg",
             "thumbnail": "test2.jpg"
         }, {
-            "id_image":7,
+            "id_img":7,
             "title": ",piouu",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
-            "id_image":8,
+            "id_img":8,
             "title": "^_^",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
@@ -197,16 +197,23 @@ function enterGalerie(contents) {
  */
 function loadWall(contents) {
     var html = '';
+    var id_item = {
+        "id_galerie":-1,
+        "id_img":-1
+    }
 
     for (var i = 0; i < contents.size; ++i) {
         if (contents == contentGalerie)
             html += "<a href='" + contents.items[i].link + "'>\n";
+
         if (contents.items[i].id_galerie != undefined)
-            html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
-                wallConfig.height, contents.items[i].id_galerie);
+            id_item.id_galerie=contents[i].id_galerie;
         else
-            html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
-                wallConfig.height,contents.items[i].id_image);
+            id_item.id_img=contents[i].id_img;
+
+        html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
+            wallConfig.height, id_item);
+
         if (contents == contentGalerie)
             html += "</a>\n"
     }
@@ -238,12 +245,12 @@ function loadWall(contents) {
  * Return: le code html d'une case
  *
  */
-function addNewCell(imgLink, width, height, id_galerie, id_image) {
+function addNewCell(imgLink, width, height, id_item) {
     var temp = "<div class='cell' ";
-    if (id_galerie != undefined)
-        temp += "data-id_galerie='" + id_galerie + "'";
-    else if (id_image != undefined)
-        temp += "data-id_image='" + id_image + "'";
+    if (id_item.id_galerie != undefined)
+        temp += "data-id_galerie='" + id_item.id_galerie + "'";
+    else if (id_item.id_img != undefined)
+        temp += "data-id_img='" + id_item.id_img+ "'";
     temp += " style='width:" + width + "px; height:" + height +
         "px;background-image: url(./" + imgLink + ")'>\n" +
         "<div class='layer'>" +
@@ -337,7 +344,7 @@ function ajaxGetModifyItem(item, operation) {
     if(operation == "modifGal")
         id_item=item.data("id_galerie");
     else 
-        id_item=item.data("id_image");
+        id_item=item.data("id_img");
     $.ajax({
         url: 'php/controller/get_galleries_and_images.php',
         type: 'POST',
@@ -371,9 +378,9 @@ function modifiableClickBind() {
     $(".modifiable").one("click", function(e) {
         if($(this).closest(".cell").data("id_galerie"))
             ajaxGetModifyItem($(this).closest(".cell"), "modifGal");
-        else if($(this).closest(".cell").data("id_image"))
+        else if($(this).closest(".cell").data("id_img"))
             ajaxGetModifyItem($(this).closest(".cell"), "modifImg");
         modifiableClickBind();
-        e.stopDefault();
+        e.preventDefault();
     });
 }
