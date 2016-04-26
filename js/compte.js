@@ -172,6 +172,7 @@ function enterGalerie(contents) {
         wall.refresh();
         wall.fitWidth();
         loadWall(contents);
+        modifiableClickBind();
     });
     $("#control-bar-album,#album-content").fadeIn();
 }
