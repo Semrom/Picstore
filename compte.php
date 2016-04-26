@@ -110,7 +110,12 @@ session_start();    include_once("php/controller/modif_compte.php");
         <?php include_once('php/view/modules/footer.php'); ?>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>	    <script type="text/javascript" src="js/modif_compte.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+	    <script type="text/javascript" src="slider-images/js/jquery.tmpl.min.js"></script>
+	    <script type="text/javascript" src="slider-images/js/jquery.easing.1.3.js"></script>
+	    <script type="text/javascript" src="slider-images/js/jquery.elastislide.js"></script>
+        <script type="text/javascript" src="js/freewall.js"></script>
+        <script type="text/javascript" src="js/modif_compte.js"></script>
         <script type="text/javascript" src="js/compte.js"></script>
     </body>
 
