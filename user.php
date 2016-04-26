@@ -64,11 +64,7 @@
 
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-	    <script type="text/javascript" src="slider-images/js/jquery.tmpl.min.js"></script>
-	    <script type="text/javascript" src="slider-images/js/jquery.easing.1.3.js"></script>
-	    <script type="text/javascript" src="slider-images/js/jquery.elastislide.js"></script>
         <script type="text/javascript" src="js/freewall.js"></script>
-	    <script type="text/javascript" src="slider-images/js/gallery.js"></script>
         <script type="text/javascript" src="js/user.js"></script>              <?php       		} else {      ?>            <!-- CONTENEUR D'EN-TETE -->      <div class="container">      	<div class="page-header" id="banner">      	    <div class="row">      	        <div class="col-lg-12 col-md-7 col-sm-6" id="sous-titre-bloc">      	        </div>      	    </div>      	</div>      </div>            	<div class="centrer">      	      <h1>Une erreur est survenue.</h1><br />      	    <a href="./" class="btn btn-info">Retour</a>      	</div>          <?php } ?>      
 	</body>
 

@@ -201,7 +201,7 @@ function loadWall(contents) {
 /*
     modifiableClickBind();
 */
-    if (contents = galeries)
+    if (contents == galeries)
         html += addPlusCell(wallConfig.width, wallConfig.height);
 
     $("#album-content").append(html);
