@@ -353,6 +353,7 @@ function enterClickBind() {
 }
 
 function modifiableClickBind() {
+    /*
     $(".modifiable").one("click", function(e) {
         if($(this).closest(".cell").data("id_galerie"))
             ajaxGetModifyItem($(this), "modifGal");
@@ -360,5 +361,15 @@ function modifiableClickBind() {
             ajaxGetModifyItem($(this), "modifImg");
         e.stopPropagation();
         modifiableClickBind();
+    });
+    */
+
+    $(".cell").on('click', '.modifiable',function(e){
+        e.stopPropagation();
+        if($(this).closest(".cell").data("id_galerie"))
+            ajaxGetModifyItem($(this), "modifGal");
+        else if($(this).parents(".cell").data("id_image"))
+            ajaxGetModifyItem($(this), "modifImg");
+     /*   modifiableClickBind();*/
     });
 }
