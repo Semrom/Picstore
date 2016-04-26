@@ -338,9 +338,10 @@ function ajaxGetModifyItem(item, operation) {
             modififyItem = data;
         },
         complete: function(result, statut) {
-            if(modififyItem.galeries != undefined)
+            if(modififyItem.galeries != undefined){
                 initModalImage(modififyItem);
                 $("#imageWindowM").modal("toggle");
+            }
             else
                 alert("Modif des galeries pas encore implementée");
         },
