@@ -61,16 +61,6 @@ footer {
     width: 70%;
 }
 
-#aimer {
-    cursor: pointer;
-}
-
-#aimer:hover {
-    cursor: pointer;
-    color: #0ce3ac;
-    text-decoration: underline;
-}
-
 #resultats-recherche {
     border: 5px #375a7f solid;
     border-radius: 20px;
@@ -218,7 +208,7 @@ footer {
 
 #com {
     margin-top: 3%;
-}
+}#textArea {	resize: vertical;}#reheight {	height: 70px;}#image-description {	font-size: 18px;}.comment {	padding: 20px;}.commentaires {	font-size: 18px;}.date-com {	color: #0ce3ac;}
 
 
 /*** AVATAR ***/
