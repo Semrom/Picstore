@@ -198,21 +198,24 @@ function enterGalerie(contents) {
 function loadWall(contents) {
     var html = '';
     var id_item = {
-        "id_galerie":-1,
-        "id_img":-1
+        "id":-1,
     }
 
     for (var i = 0; i < contents.size; ++i) {
         if (contents == contentGalerie)
             html += "<a href='" + contents.items[i].link + "'>\n";
 
-        if (contents.items[i].id_galerie != undefined)
-            id_item.id_galerie=contents.items[i].id_galerie;
-        else
-            id_item.id_img=contents.items[i].id_img;
+        if (contents.items[i].id_galerie != undefined){
+            id_item.id=contents.items[i].id_galerie;
+            html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
+                wallConfig.height, id_item,"galerie");
+        }
+        else{
+            id_item.id=contents.items[i].id_img;
+            html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
+                wallConfig.height, id_item,"image");
+        }
 
-        html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
-            wallConfig.height, id_item);
 
         if (contents == contentGalerie)
             html += "</a>\n"
@@ -245,11 +248,11 @@ function loadWall(contents) {
  * Return: le code html d'une case
  *
  */
-function addNewCell(imgLink, width, height, id_item) {
+function addNewCell(imgLink, width, height, id_item, mode) {
     var temp = "<div class='cell' ";
-    if (id_item.id_galerie != undefined)
+    if (mode.localeCompare("galerie") == 0)
         temp += "data-id_galerie='" + id_item.id_galerie + "'";
-    else if (id_item.id_img != undefined)
+    else if (mode.localeCompare("image") == 0)
         temp += "data-id_img='" + id_item.id_img+ "'";
     temp += " style='width:" + width + "px; height:" + height +
         "px;background-image: url(./" + imgLink + ")'>\n" +
