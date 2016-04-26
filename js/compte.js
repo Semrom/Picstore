@@ -378,12 +378,11 @@ function enterClickBind() {
 }
 
 function modifiableClickBind() {
-    $(".modifiable").one("click", function(e) {
+    $(".modifiable").on("click", function(e) {
         if($(this).closest(".cell").data("id_galerie"))
             ajaxGetModifyItem($(this).closest(".cell"), "modifGal");
         else if($(this).closest(".cell").data("id_img"))
             ajaxGetModifyItem($(this).closest(".cell"), "modifImg");
-        modifiableClickBind();
         e.preventDefault();
     });
 }
