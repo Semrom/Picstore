@@ -358,7 +358,7 @@ function modifiableClickBind() {
             ajaxGetModifyItem($(this), "modifGal");
         else if($(this).parents(".cell").data("id_image"))
             ajaxGetModifyItem($(this), "modifImg");
-        e.stopPropagation(); // empeche l'execution de l'element parent ()
-        modifiableClickBind(;)
+        e.stopPropagation();
+        modifiableClickBind();
     });
 }
