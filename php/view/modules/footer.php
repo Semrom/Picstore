@@ -1,1 +1,1 @@
-<div id="clear"></div><footer>    <div class="container">        <div class="col-lg-3">            Picstore ©2016        </div>        <div class="col-lg-3 col-lg-offset-6">            <a href="#">Contact</a>        </div>    </div></footer>
+<div id="clear"></div><footer>    <div class="container">        <div class="col-lg-3">            Picstore ©2016        </div>        <div class="col-lg-3 col-lg-offset-6">            <a href="mailto:contact@picstore.16mb.com">Contact</a>        </div>    </div></footer>
