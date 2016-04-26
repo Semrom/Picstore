@@ -251,9 +251,9 @@ function loadWall(contents) {
 function addNewCell(imgLink, width, height, id_item, mode) {
     var temp = "<div class='cell' ";
     if (mode.localeCompare("galerie") == 0)
-        temp += "data-id_galerie='" + id_item.id_galerie + "'";
+        temp += "data-id_galerie='" + id_item.id + "'";
     else if (mode.localeCompare("image") == 0)
-        temp += "data-id_img='" + id_item.id_img+ "'";
+        temp += "data-id_img='" + id_item.id+ "'";
     temp += " style='width:" + width + "px; height:" + height +
         "px;background-image: url(./" + imgLink + ")'>\n" +
         "<div class='layer'>" +
