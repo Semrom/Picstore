@@ -86,10 +86,8 @@
 	        <div class="container">
 	            <div class="col-lg-12 centrer">	            	<div class="col-lg-4">	            	    <div class="well well-sm">	            	        <p id="auteur"></p>	            	    </div>	            	</div>
 	                <div class="col-lg-2 col-lg-offset-6">
-	                    <div class="well well-sm" id="like-zone">
-	                        <?php if (isset($_SESSION['user'])) { ?>
-	                        <span id="aimer" <?php echo 'data-user="' . $_SESSION['user']['id_user'] . '"'; ?>></span>	                        <span class="badge" id="nb-jaime"></span>
-	                        <?php } else { ?>
+                        <?php if (isset($_SESSION['user'])) { ?>                        <button type="button" class="btn btn-default" id="aimer" <?php echo 'data-user="' . $_SESSION['user']['id_user'] . '"'; ?> ></button>
+                        <?php } else { ?>	                    <div class="well well-sm" id="like-zone">
 	                        <p><span id="nb-jaime"></span> J'aime</p>
 	                        <?php } ?>
 	                    </div>
