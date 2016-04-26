@@ -188,16 +188,18 @@ function loadWall(contents) {
     var html = '';
 
     for (var i = 0; i < contents.size; ++i) {
-        if (contents == contentGalerie)
+      /*  if (contents == contentGalerie)
             html += "<a href='" + contents.items[i].link + "'>\n";
+            */
         if (contents.items[i].id_galerie != undefined)
             html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
                 wallConfig.height, contents.items[i].id_galerie);
         else
             html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
                 wallConfig.height,contents.items[i].id_image);
-        if (contents == contentGalerie)
+       /* if (contents == contentGalerie)
             html += "</a>\n"
+            */
     }
     if (contents == galeries)
         html += addPlusCell(wallConfig.width, wallConfig.height);
@@ -356,11 +358,11 @@ function enterClickBind() {
 
 function modifiableClickBind() {
     $(".modifiable").one("click", function(e) {
-        e.stopPropagation();
         if($(this).closest(".cell").data("id_galerie"))
-            ajaxGetModifyItem($(this), "modifGal");
+            ajaxGetModifyItem($(this).closest(".cell"), "modifGal");
         else if($(this).parents(".cell").data("id_image"))
-            ajaxGetModifyItem($(this), "modifImg");
+            ajaxGetModifyItem($(this).closest(".cell"), "modifImg");
         modifiableClickBind();
+        e.stopPropagation();
     });
 }
