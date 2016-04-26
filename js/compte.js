@@ -207,9 +207,9 @@ function loadWall(contents) {
             html += "<a href='" + contents.items[i].link + "'>\n";
 
         if (contents.items[i].id_galerie != undefined)
-            id_item.id_galerie=contents[i].id_galerie;
+            id_item.id_galerie=contents.items[i].id_galerie;
         else
-            id_item.id_img=contents[i].id_img;
+            id_item.id_img=contents.items[i].id_img;
 
         html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
             wallConfig.height, id_item);
