@@ -1,5 +1,5 @@
-<?php
-session_start();    include_once("php/controller/modif_compte.php");
+<?php 
+	session_start();    	include_once("php/controller/modif_compte.php");  	include_once("php/model/Image.php");  	  	$img = new Image($bdd);  	  	$nbJaime = $img->getNbJaime($_SESSION['user']['id_user']);
 ?>
 <!DOCTYPE html>
 <html>
@@ -77,7 +77,7 @@ session_start();    include_once("php/controller/modif_compte.php");
             </div>
 
             <div id="nb_like_user" class="centrer">
-            <h2>13423 "J'aime"</h2>
+            <h2><?php echo $nbJaime . ' "J\'aime"'; ?></h2>
             </div>
 
           <div class="centrer">
