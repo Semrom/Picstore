@@ -94,11 +94,9 @@ $(document).ready(function() {
         complete: function(result, statut) {
             loadWall(galeries);
             enterClickBind();
-            /*
             $("#imageWindowM").on('hidden.bs.modal',function(e){ 
                 $("#imageGalFormM").remove("label");
             });
-            */
         },
         error: function(result, statut, erreur) {
             alert("Echec du chargement des galeries, erreur: " + erreur);
@@ -198,9 +196,7 @@ function loadWall(contents) {
         if (contents == contentGalerie)
             html += "</a>\n"
     }
-/*
     modifiableClickBind();
-*/
     if (contents == galeries)
         html += addPlusCell(wallConfig.width, wallConfig.height);
 
@@ -250,7 +246,7 @@ function addPlusCell(width, height) {
         "<div class='layer'> <span class='plus glyphicon glyphicon-plus'> </span>\n</div>\n</div>\n";
     return temp;
 }
-/*
+
 function initModalImage(image){
     $("#imageTitleM").text(image.title);
     $("#imageImgM").attr({
@@ -265,7 +261,7 @@ function initModalImage(image){
     $("#imageGaleriesM").append(addGaleriesCheckboxModal(galeries.items));
 
     var i;
-    for (i=0; i< image.size; ++i) // check toutes les galeries ou l'image est deja presente
+    for (i=0; i< image.size; ++i) /* check toutes les galeries ou l'image est deja presente */
         $("#"+image.galeries.id+"Checkbox").prop('checked', true);
 }
 
@@ -279,7 +275,6 @@ function addGaleriesCheckboxModal(galeriesArray, size){
     
     return html;
 }
-*/
 
 function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1);
@@ -323,12 +318,17 @@ function ajaxEnterGalerie(cell) {
         }
     });
 }
-/*
-function ajaxGetModifyItem(item) {
+
+function ajaxGetModifyItem(item, operation) {
+    var id_item;
+    if(operation == "modifGal")
+        id_item=item.data("id_galerie");
+    else 
+        id_item=item.data("id_image");
     $.ajax({
         url: 'php/controller/get_galleries_and_images.php',
         type: 'POST',
-        data: 'id_gal=' + cell.data("id_galerie") + '&op=contentGalerie',
+        data: 'id='+id_item+'&op='+operation,
         dataType: 'json',
         success: function(data) {
             modififyItem = data;
@@ -345,19 +345,20 @@ function ajaxGetModifyItem(item) {
         }
     });
 }
-*/
 
 function enterClickBind() {
     $(".cell").one("click", function(e) {
         ajaxEnterGalerie($(this));
     });
 }
-/*
+
 function modifiableClickBind() {
     $(".modifiable").one("click", function(e) {
-        ajaxGetModifyItem($(this));
+        if($(this).closest(".cell").data("id_galerie"))
+            ajaxGetModifyItem($(this), "modifGal");
+        else if($(this).parents(".cell").data("id_image"))
+            ajaxGetModifyItem($(this), "modifImg");
         e.stopPropagation(); // empeche l'execution de l'element parent ()
         modifiableClickBind(;)
     });
 }
-*/
