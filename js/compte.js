@@ -190,11 +190,11 @@ function loadWall(contents) {
         if (contents == contentGalerie)
             html += "<a href='" + contents.items[i].link + "'>\n";
         if (contents.items[i].id_galerie != undefined)
-            html += addNewCell(contents.items[i].title, contents.items[i].thumbnail, wallConfig.width,
+            html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
                 wallConfig.height, contents.items[i].id_galerie);
         else
-            html += addNewCell(contents.items[i].title, contents.items[i].thumbnail, wallConfig.width,
-                wallConfig.height);
+            html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
+                wallConfig.height,contents.items[i].id_image);
         if (contents == contentGalerie)
             html += "</a>\n"
     }
@@ -229,7 +229,7 @@ function loadWall(contents) {
  * Return: le code html d'une case
  *
  */
-function addNewCellModify(imgLink, width, height, id_galerie, id_image) {
+function addNewCell(imgLink, width, height, id_galerie, id_image) {
     var temp = "<div class='cell' ";
     if (id_galerie != undefined)
         temp += "data-id_galerie='" + id_galerie + "'";
