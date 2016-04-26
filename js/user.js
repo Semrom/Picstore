@@ -78,9 +78,7 @@ $(document).ready(function() {
         },
         complete: function(result, statut) {
             loadWall(galeries);
-            $(".cell").one("click", function() {
-                ajaxEnterGalerie($(this));
-            });
+            enterClickBind();
         },
         error: function(result, statut, erreur) {
             alert("Echec du chargement des galeries, erreur: " + erreur);
@@ -126,10 +124,7 @@ function leaveGalerie(contents) {
         wall.refresh();
         wall.fitWidth();
         loadWall(contents);
-        $(".cell").one("click", function() {
-            /* charger avec ajax le contenue de la galerie dans contentGalerie avant */
-            ajaxEnterGalerie($(this));
-        });
+        enterClickBind();
     });
 
     $("#control-bar-album,#album-content").fadeIn();
@@ -259,5 +254,17 @@ function ajaxEnterGalerie(cell){
         error: function(result, statut, erreur){
             alert("Echec du chargement de la galerie, erreur: " + erreur);
         }
+    });
+}
+
+function enterClickBind() {
+    $(".cell").one("click", function(e) {
+        /*
+        if (e.target != this) { // on reset l'event click si on a clique sur le titre de l'image ou le texte modifier
+            enterClickBind();
+            return;
+        }
+        */
+        ajaxEnterGalerie($(this));
     });
 }

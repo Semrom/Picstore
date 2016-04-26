@@ -63,6 +63,21 @@ var galeries = { /* variable qui stock toutes les galeries disponibles a affiche
             "thumbnail": "test.jpg"
         }],
         "size": 9
+    },
+    modififyItem = { //contenue de l'objet a modifier
+        "id":"id_1",
+        "title": "Titre",
+        "nbLike": 45,
+        "isPublic": true,
+        "thumbnail":"img/test.jpg",
+        "galeries": [{
+            "id_gal":0,
+            "title": "galerie_1"
+        }, {
+            "id_gal":0,
+            "title": "galerie_2"
+        }],
+        "size": 2
     };
 
 $(document).ready(function() {
@@ -71,16 +86,19 @@ $(document).ready(function() {
     $.ajax({
         url: 'php/controller/get_galleries_and_images.php',
         type: 'POST',
-        data: 'id_user=' + $("#pseudo_user").data('id') + '&op=Galeries',
+        data: 'op=compteGal',
         dataType: 'json',
         success: function(data) {
             galeries = data;
         },
         complete: function(result, statut) {
             loadWall(galeries);
-            $(".cell").one("click", function() {
-                ajaxEnterGalerie($(this));
+            enterClickBind();
+            /*
+            $("#imageWindowM").on('hidden.bs.modal',function(e){ 
+                $("#imageGalFormM").remove("label");
             });
+            */
         },
         error: function(result, statut, erreur) {
             alert("Echec du chargement des galeries, erreur: " + erreur);
@@ -113,7 +131,7 @@ function addControlBar() {
 function leaveGalerie(contents) {
     $("#control-bar-album").fadeOut(function() {
         $("#returnBtn").remove();
-        var albumsListTitle = "Galeries de " + $("h1").text();
+        var albumsListTitle = "Votre galerie";
         $("h4").text(albumsListTitle);
         $("h4").removeClass();
         $("h4").addClass(
@@ -126,10 +144,7 @@ function leaveGalerie(contents) {
         wall.refresh();
         wall.fitWidth();
         loadWall(contents);
-        $(".cell").one("click", function() {
-            /* charger avec ajax le contenue de la galerie dans contentGalerie avant */
-            ajaxEnterGalerie($(this));
-        });
+        enterClickBind();
     });
 
     $("#control-bar-album,#album-content").fadeIn();
@@ -174,7 +189,7 @@ function loadWall(contents) {
     for (var i = 0; i < contents.size; ++i) {
         if (contents == contentGalerie)
             html += "<a href='" + contents.items[i].link + "'>\n";
-        if(contents.items[i].id_galerie != undefined)
+        if (contents.items[i].id_galerie != undefined)
             html += addNewCell(contents.items[i].title, contents.items[i].thumbnail, wallConfig.width,
                 wallConfig.height, contents.items[i].id_galerie);
         else
@@ -183,6 +198,11 @@ function loadWall(contents) {
         if (contents == contentGalerie)
             html += "</a>\n"
     }
+/*
+    modifiableClickBind();
+*/
+    if (contents = galeries)
+        html += addPlusCell(wallConfig.width, wallConfig.height);
 
     $("#album-content").append(html);
 
@@ -209,15 +229,57 @@ function loadWall(contents) {
  * Return: le code html d'une case
  *
  */
-function addNewCell(title, imgLink, width, height, id_galerie) {
+function addNewCellModify(imgLink, width, height, id_galerie, id_image) {
     var temp = "<div class='cell' ";
     if (id_galerie != undefined)
         temp += "data-id_galerie='" + id_galerie + "'";
+    else if (id_image != undefined)
+        temp += "data-id_image='" + id_image + "'";
     temp += " style='width:" + width + "px; height:" + height +
         "px;background-image: url(./" + imgLink + ")'>\n" +
-        "<div class='layer'>" + "<span class='desc'>" + title + "</span>" + "</div>\n</div>\n";
+        "<div class='layer'>" +
+        "<span class='desc modifiable'>Modifier</span>" +
+        "</div>\n</div>\n";
     return temp;
 }
+
+function addPlusCell(width, height) {
+    var temp = "<div class='cell' ";
+    temp += " style='width:" + width + "px; height:" + height +
+        "px;background-image: url(\"./img/black.png\")'>\n" +
+        "<div class='layer'> <span class='plus glyphicon glyphicon-plus'> </span>\n</div>\n</div>\n";
+    return temp;
+}
+/*
+function initModalImage(image){
+    $("#imageTitleM").text(image.title);
+    $("#imageImgM").attr({
+        src:image.thumbnail,
+        alt:image.title
+    });
+    $("#imageNbLike").text(image.nbLike);
+    if(image.isPublic)
+        $("select#imageVisibilityM").val("public");
+    else
+        $("select#imageVisibilityM").val("private");
+    $("#imageGaleriesM").append(addGaleriesCheckboxModal(galeries.items));
+
+    var i;
+    for (i=0; i< image.size; ++i) // check toutes les galeries ou l'image est deja presente
+        $("#"+image.galeries.id+"Checkbox").prop('checked', true);
+}
+
+function addGaleriesCheckboxModal(galeriesArray, size){
+    var i, html='';
+    for(i=0; i<size; ++i){
+        html+="<label class='checkbox-inline'>\n"
+            +"<input id='"+ galeriesArray.id_gal +"Checkbox' value='"+galeriesArray.id_gal+"' type='checkbox'>"
+            + galeriesArray.title + "</label>";
+    }
+    
+    return html;
+}
+*/
 
 function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1);
@@ -244,20 +306,58 @@ function prepareLoadingGif() {
 
 }
 
-function ajaxEnterGalerie(cell){
+function ajaxEnterGalerie(cell) {
     $.ajax({
         url: 'php/controller/get_galleries_and_images.php',
         type: 'POST',
-        data: 'id_gal=' + cell.data("id_galerie") + '&op=contentGalerie',
-        dataType:'json',
+        data: 'id_gal=' + cell.data("id_galerie") + '&op=compteImg',
+        dataType: 'json',
         success: function(data) {
             contentGalerie = data;
         },
         complete: function(result, statut) {
             enterGalerie(contentGalerie);
         },
-        error: function(result, statut, erreur){
+        error: function(result, statut, erreur) {
             alert("Echec du chargement de la galerie, erreur: " + erreur);
         }
     });
 }
+/*
+function ajaxGetModifyItem(item) {
+    $.ajax({
+        url: 'php/controller/get_galleries_and_images.php',
+        type: 'POST',
+        data: 'id_gal=' + cell.data("id_galerie") + '&op=contentGalerie',
+        dataType: 'json',
+        success: function(data) {
+            modififyItem = data;
+        },
+        complete: function(result, statut) {
+            if(modififyItem.galeries != undefined)
+                initModalImage(modififyItem);
+            else
+                alert("Modif des galeries pas encore implementée");
+        },
+        error: function(result, statut, erreur) {
+            alert("Echec du chargement des informations pour modification, erreur: " +
+                erreur);
+        }
+    });
+}
+*/
+
+function enterClickBind() {
+    $(".cell").one("click", function(e) {
+        ajaxEnterGalerie($(this));
+    });
+}
+/*
+function modifiableClickBind() {
+    $(".modifiable").one("click", function(e) {
+        ajaxGetModifyItem($(this));
+        e.stopPropagation(); // empeche l'execution de l'element parent ()
+        modifiableClickBind(;)
+    });
+}
+*/
