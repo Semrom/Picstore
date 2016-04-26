@@ -303,11 +303,9 @@ footer {
 .desc {
     position: absolute;
     width: 100%;
-    margin-top: 75px;
+    margin-top: 60px;
     text-decoration: none;
     text-align: center;
-    /*font-family: Georgia, serif;*/
-    /*font-style: italic;*/
     font-size: 14px;
     line-height: 1.4;
     color: transparent;
@@ -316,14 +314,15 @@ footer {
     !important
 }
 
-.add {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .modifiable{
     cursor:pointer;
+    margin-top:110px;
+    font-weight:bold;
+    text-decoration:underline;
+}
+
+.modifiable:hover {
+
 }
 
 span.glyphicon-plus {

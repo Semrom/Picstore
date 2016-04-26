@@ -207,12 +207,12 @@ function loadWall(contents) {
 
         if (contents.items[i].id_galerie != undefined){
             id_item.id=contents.items[i].id_galerie;
-            html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
+            html += addNewCell(contents.items[i].title, contents.items[i].thumbnail, wallConfig.width,
                 wallConfig.height, id_item,"galerie");
         }
         else{
             id_item.id=contents.items[i].id_img;
-            html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
+            html += addNewCell(contents.items[i].title, contents.items[i].thumbnail, wallConfig.width,
                 wallConfig.height, id_item,"image");
         }
 
@@ -248,7 +248,7 @@ function loadWall(contents) {
  * Return: le code html d'une case
  *
  */
-function addNewCell(imgLink, width, height, id_item, mode) {
+function addNewCell(title, imgLink, width, height, id_item, mode) {
     var temp = "<div class='cell' ";
     if (mode.localeCompare("galerie") == 0)
         temp += "data-id_galerie='" + id_item.id + "'";
@@ -257,6 +257,7 @@ function addNewCell(imgLink, width, height, id_item, mode) {
     temp += " style='width:" + width + "px; height:" + height +
         "px;background-image: url(./" + imgLink + ")'>\n" +
         "<div class='layer'>" +
+        "<span class='desc'>" + title + "</span>" +
         "<span class='desc modifiable'>Modifier</span>" +
         "</div>\n</div>\n";
     return temp;
