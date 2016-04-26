@@ -26,38 +26,47 @@ var galeries = { /* variable qui stock toutes les galeries disponibles a affiche
     contentGalerie = { /*variable qui stock le contenue d'une galerie , a charger avec ajax avant de l'utiliser */
         "title": "Something",
         "items": [{
+            "id_image":0,
             "title": "Lourdeur",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
+            "id_image":1,
             "title": "Epic",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
+            "id_image":2,
             "title": "MRW ta geule",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
+            "id_image":3,
             "title": "Red",
             "link": "FatGuyShootingRed.gif",
             "thumbnail": "FatGuyShootingRed.gif"
         }, {
+            "id_image":4,
             "title": "Blue",
             "link": "FatGuyShootingBlue.gif",
             "thumbnail": "FatGuyShootingBlue.gif"
         }, {
+            "id_image":5,
             "title": "who",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
+            "id_image":6,
             "title": "piouu",
             "link": "test2.jpg",
             "thumbnail": "test2.jpg"
         }, {
+            "id_image":7,
             "title": ",piouu",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
+            "id_image":8,
             "title": "^_^",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
@@ -362,9 +371,9 @@ function modifiableClickBind() {
     $(".modifiable").one("click", function(e) {
         if($(this).closest(".cell").data("id_galerie"))
             ajaxGetModifyItem($(this).closest(".cell"), "modifGal");
-        else if($(this).parents(".cell").data("id_image"))
+        else if($(this).closest(".cell").data("id_image"))
             ajaxGetModifyItem($(this).closest(".cell"), "modifImg");
         modifiableClickBind();
-        e.stopPropagation();
+        e.stopDefault();
     });
 }
