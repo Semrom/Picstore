@@ -172,7 +172,9 @@ function enterGalerie(contents) {
         wall.refresh();
         wall.fitWidth();
         loadWall(contents);
-        modifiableClickBind();
+        $(document).ready(function(){
+            modifiableClickBind();
+        });
     });
     $("#control-bar-album,#album-content").fadeIn();
 }
@@ -188,18 +190,16 @@ function loadWall(contents) {
     var html = '';
 
     for (var i = 0; i < contents.size; ++i) {
-      /*  if (contents == contentGalerie)
+        if (contents == contentGalerie)
             html += "<a href='" + contents.items[i].link + "'>\n";
-            */
         if (contents.items[i].id_galerie != undefined)
             html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
                 wallConfig.height, contents.items[i].id_galerie);
         else
             html += addNewCell(contents.items[i].thumbnail, wallConfig.width,
                 wallConfig.height,contents.items[i].id_image);
-       /* if (contents == contentGalerie)
+        if (contents == contentGalerie)
             html += "</a>\n"
-            */
     }
     if (contents == galeries)
         html += addPlusCell(wallConfig.width, wallConfig.height);
@@ -340,6 +340,7 @@ function ajaxGetModifyItem(item, operation) {
         complete: function(result, statut) {
             if(modififyItem.galeries != undefined)
                 initModalImage(modififyItem);
+                $("#imageWindowM").modal("toggle");
             else
                 alert("Modif des galeries pas encore implementée");
         },
