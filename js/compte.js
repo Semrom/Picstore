@@ -131,7 +131,7 @@ function addControlBar() {
 function leaveGalerie(contents) {
     $("#control-bar-album").fadeOut(function() {
         $("#returnBtn").remove();
-        var albumsListTitle = "Votre galerie";
+        var albumsListTitle = "Vos galeries";
         $("h4").text(albumsListTitle);
         $("h4").removeClass();
         $("h4").addClass(

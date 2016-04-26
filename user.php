@@ -37,7 +37,7 @@
 	        </div>
 
 	        <div id="nb_like_user" class="centrer">
-	            <h3><?php echo $nbJaime . ' \"J\'aime\"'; ?></h3>
+	            <h3><?php echo $nbJaime . ' "J\'aime"'; ?></h3>
 	        </div>
 
 	        <!-- GRILLE DE GALLERIES -->
@@ -49,13 +49,6 @@
                 <div id="album-content" class="container album-content">
                     <div id="loading" class="loading"></div>
                 </div>
-	                <!-- Bouton +
-	                <div class="col-xs-3">
-	                    <div class="dummy"></div>
-	                    <div class="in add" role="button">
-	                        <span class="glyphicon glyphicon-plus"></span>
-	                    </div>
-	                </div> -->
 	        </div>
 	    </div>
 

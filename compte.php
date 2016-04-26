@@ -77,7 +77,7 @@ session_start();    include_once("php/controller/modif_compte.php");
             </div>
 
             <div id="nb_like_user" class="centrer">
-            <h2>13423 J'aime</h2>
+            <h2>13423 "J'aime"</h2>
             </div>
 
           <div class="centrer">
@@ -89,19 +89,12 @@ session_start();    include_once("php/controller/modif_compte.php");
 	        <!-- GRILLE DE GALLERIES -->
             <div id="album" class="container album">
                 <div id="control-bar-album" class="container-fluid">
-                    <h4 class="col-xs-5 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 centrer"><?php echo 'Galeries de ' . $infos['pseudo_user']; ?></h4>
+                    <h4 class="col-xs-5 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-4 col-md-offset-4 centrer">Vos galeries</h4>
                 </div>
 
                 <div id="album-content" class="container album-content">
                     <div id="loading" class="loading"></div>
                 </div>
-	                <!-- Bouton +
-	                <div class="col-xs-3">
-	                    <div class="dummy"></div>
-	                    <div class="in add" role="button">
-	                        <span class="glyphicon glyphicon-plus"></span>
-	                    </div>
-	                </div> -->
 	        </div>
 
 
