@@ -1,70 +1,3 @@
-var wall, wallConfig = {
-    "width": 150,
-    "height": 150
-};
-
-var galeries = { /* variable qui stock toutes les galeries disponibles a afficher, a charger une seule fois au debut */
-        "items": [{
-            "title": "Uploads",
-            "thumbnail": "test.jpg",
-            "id_galerie": 0
-        }, {
-            "title": "Favoris",
-            "thumbnail": "test.jpg",
-            "id_galerie": 1
-        }, {
-            "title": "Images turfesques",
-            "thumbnail": "test.jpg",
-            "id_galerie": 2
-        }, {
-            "title": "Galerie lourde",
-            "thumbnail": "test.jpg",
-            "id_galerie": 3
-        }],
-        "size": 4
-    },
-    contentGalerie = { /*variable qui stock le contenue d'une galerie , a charger avec ajax avant de l'utiliser */
-        "title": "Something",
-        "items": [{
-            "title": "Lourdeur",
-            "link": "test.jpg",
-            "thumbnail": "test.jpg"
-        }, {
-            "title": "Epic",
-            "link": "test.jpg",
-            "thumbnail": "test.jpg"
-        }, {
-            "title": "MRW ta geule",
-            "link": "test.jpg",
-            "thumbnail": "test.jpg"
-        }, {
-            "title": "Red",
-            "link": "FatGuyShootingRed.gif",
-            "thumbnail": "FatGuyShootingRed.gif"
-        }, {
-            "title": "Blue",
-            "link": "FatGuyShootingBlue.gif",
-            "thumbnail": "FatGuyShootingBlue.gif"
-        }, {
-            "title": "who",
-            "link": "test.jpg",
-            "thumbnail": "test.jpg"
-        }, {
-            "title": "piouu",
-            "link": "test2.jpg",
-            "thumbnail": "test2.jpg"
-        }, {
-            "title": ",piouu",
-            "link": "test.jpg",
-            "thumbnail": "test.jpg"
-        }, {
-            "title": "^_^",
-            "link": "test.jpg",
-            "thumbnail": "test.jpg"
-        }],
-        "size": 9
-    };
-
 $(document).ready(function() {
     wall = new Freewall("#album-content");
     prepareLoadingGif();
@@ -78,7 +11,7 @@ $(document).ready(function() {
         },
         complete: function(result, statut) {
             loadWall(galeries);
-            enterClickBind();
+            enterClickBind("contentGalerie");
         },
         error: function(result, statut, erreur) {
             alert("Echec du chargement des galeries, erreur: " + erreur);
@@ -124,7 +57,7 @@ function leaveGalerie(contents) {
         wall.refresh();
         wall.fitWidth();
         loadWall(contents);
-        enterClickBind();
+        enterClickBind("contentGalerie");
     });
 
     $("#control-bar-album,#album-content").fadeIn();
@@ -214,36 +147,11 @@ function addNewCell(title, imgLink, width, height, id_galerie) {
     return temp;
 }
 
-function getUrlParameter(sParam) {
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++) {
-        var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam) {
-            return sParameterName[1];
-        }
-    }
-
-    return "FAIL";
-}
-
-function prepareLoadingGif() {
-    $("#loading").hide();
-    $(document).ajaxStart(function() {
-        $("#loading").show();
-    });
-
-    $(document).ajaxStop(function() {
-        $("#loading").hide();
-    });
-
-}
-
-function ajaxEnterGalerie(cell){
+function ajaxEnterGalerie(cell, operation){
     $.ajax({
         url: 'php/controller/get_galleries_and_images.php',
         type: 'POST',
-        data: 'id_gal=' + cell.data("id_galerie") + '&op=contentGalerie',
+        data: 'id_gal=' + cell.data("id_galerie") + '&op='+operation,
         dataType:'json',
         success: function(data) {
             contentGalerie = data;
@@ -257,14 +165,20 @@ function ajaxEnterGalerie(cell){
     });
 }
 
-function enterClickBind() {
+function enterClickBind(operation) {
     $(".cell").one("click", function(e) {
-        /*
-        if (e.target != this) { // on reset l'event click si on a clique sur le titre de l'image ou le texte modifier
-            enterClickBind();
-            return;
-        }
-        */
-        ajaxEnterGalerie($(this));
+        ajaxEnterGalerie($(this), operation);
     });
+}
+
+function prepareLoadingGif() {
+    $("#loading").hide();
+    $(document).ajaxStart(function() {
+        $("#loading").show();
+    });
+
+    $(document).ajaxStop(function() {
+        $("#loading").hide();
+    });
+
 }

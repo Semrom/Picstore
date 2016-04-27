@@ -18,32 +18,32 @@
     <body>
 
         <!-- FENETRE MODALE  (doit etre tout en haut pour eviter probleme selon bootstrap) -->
-        <div class="modal fade" id="imageWindowM" tabindex="-1" role="dialog">
+        <div class="modal fade" id="windowM" tabindex="-1" role="dialog">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h3 id="imageTitleM" class="modal-title">Titre</h3>
+                        <h3 id="titleM" class="modal-title">Titre</h3>
                     </div>
                     <div class="modal-body">
                         <div>
-                            <img id="imageImgM"src="./img/test.jpg" style="float:left;margin-right:10px;" height="200" width="200">
+                            <img id="imgM"src="./img/test.jpg" style="float:left;margin-right:10px;" height="200" width="200">
                         </div>
-                        <p style="font-weight:bold;">Nombre de 'J'aime' :</p>
-                        <p id="imageNbLikeM" >54</p>
+                        <p id="nbLikeTitleM" style="font-weight:bold;">Nombre de 'J'aime' :</p>
+                        <p id="nbLikeM" >54</p>
                         <p>
                             <form role="form">
                                 <label for="visibility">Visibilité :</label>
-                                <select class="form-control" style="width:auto;" id="imageVisibilityM">
+                                <select class="form-control" style="width:auto;" id="visibilityM">
                                     <option value="private">Privé</option> 
                                     <option value="public">Publique</option> 
                                 </select>
                             </form>
                         </p>
                         <br style="clear:both;line-height:0;">
-                        <form id="imageGalFormM" role="form">
+                        <form id="galFormM" role="form">
                             <fieldset>
-                                <legend id="imageGaleriesM" style="margin-bottom:5px;">Galeries :</legend>
+                                <legend id="galeriesM" style="margin-bottom:5px;">Galeries :</legend>
                             </fieldset>
                         </form>
                     </div>

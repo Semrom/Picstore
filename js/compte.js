@@ -1,94 +1,3 @@
-var wall, wallConfig = {
-    "width": 150,
-    "height": 150
-};
-
-var galeries = { /* variable qui stock toutes les galeries disponibles a afficher, a charger une seule fois au debut */
-        "items": [{
-            "title": "Uploads",
-            "thumbnail": "test.jpg",
-            "id_galerie": 0
-        }, {
-            "title": "Favoris",
-            "thumbnail": "test.jpg",
-            "id_galerie": 1
-        }, {
-            "title": "Images turfesques",
-            "thumbnail": "test.jpg",
-            "id_galerie": 2
-        }, {
-            "title": "Galerie lourde",
-            "thumbnail": "test.jpg",
-            "id_galerie": 3
-        }],
-        "size": 4
-    },
-    contentGalerie = { /*variable qui stock le contenue d'une galerie , a charger avec ajax avant de l'utiliser */
-        "title": "Something",
-        "items": [{
-            "id_img":0,
-            "title": "Lourdeur",
-            "link": "test.jpg",
-            "thumbnail": "test.jpg"
-        }, {
-            "id_img":1,
-            "title": "Epic",
-            "link": "test.jpg",
-            "thumbnail": "test.jpg"
-        }, {
-            "id_img":2,
-            "title": "MRW ta geule",
-            "link": "test.jpg",
-            "thumbnail": "test.jpg"
-        }, {
-            "id_img":3,
-            "title": "Red",
-            "link": "FatGuyShootingRed.gif",
-            "thumbnail": "FatGuyShootingRed.gif"
-        }, {
-            "id_img":4,
-            "title": "Blue",
-            "link": "FatGuyShootingBlue.gif",
-            "thumbnail": "FatGuyShootingBlue.gif"
-        }, {
-            "id_img":5,
-            "title": "who",
-            "link": "test.jpg",
-            "thumbnail": "test.jpg"
-        }, {
-            "id_img":6,
-            "title": "piouu",
-            "link": "test2.jpg",
-            "thumbnail": "test2.jpg"
-        }, {
-            "id_img":7,
-            "title": ",piouu",
-            "link": "test.jpg",
-            "thumbnail": "test.jpg"
-        }, {
-            "id_img":8,
-            "title": "^_^",
-            "link": "test.jpg",
-            "thumbnail": "test.jpg"
-        }],
-        "size": 9
-    },
-    modififyItem = { //contenue de l'objet a modifier
-        "id":"id_1",
-        "title": "Titre",
-        "nbLike": 45,
-        "isPublic": true,
-        "thumbnail":"img/test.jpg",
-        "galeries": [{
-            "id_gal":0,
-            "title": "galerie_1"
-        }, {
-            "id_gal":0,
-            "title": "galerie_2"
-        }],
-        "size": 2
-    };
-
 $(document).ready(function() {
     wall = new Freewall("#album-content");
     prepareLoadingGif();
@@ -102,10 +11,10 @@ $(document).ready(function() {
         },
         complete: function(result, statut) {
             loadWall(galeries);
-            enterClickBind();
+            enterClickBind("compteImg");
             modifiableClickBind();
-            $("#imageWindowM").on('hidden.bs.modal',function(e){ 
-                $("#imageGalFormM").remove("label");
+            $("#windowM").on('hidden.bs.modal',function(e){ 
+                $("#galFormM").remove("label");
             });
         },
         error: function(result, statut, erreur) {
@@ -113,22 +22,6 @@ $(document).ready(function() {
         }
     });
 });
-
-/*
- * addControlBar()
- *
- * La fonction ajoute une barre de controle pour sortir de la galerie et revenir vers la liste de
- * galeries
- *
- */
-function addControlBar() {
-    var htmlInsideAlbum =
-        "<button id='returnBtn' class='btn btn-default col-xs-3 col-sm-2 col-md-1' type='button'>Retour</button>";
-    $("#control-bar-album").prepend(htmlInsideAlbum);
-    $("#returnBtn").one("click", function() {
-        leaveGalerie(galeries);
-    });
-}
 
 /*
  * leaveGalerie(contents, contentsClick)
@@ -152,7 +45,7 @@ function leaveGalerie(contents) {
         wall.refresh();
         wall.fitWidth();
         loadWall(contents);
-        enterClickBind();
+        enterClickBind("compteImg");
         modifiableClickBind();
     });
 
@@ -187,6 +80,7 @@ function enterGalerie(contents) {
     });
     $("#control-bar-album,#album-content").fadeIn();
 }
+
 /*
  *
  *  loadWall(contents, callback)
@@ -271,26 +165,34 @@ function addPlusCell(width, height) {
     return temp;
 }
 
-function initModalImage(image){
-    $("#imageTitleM").text(image.title);
-    $("#imageImgM").attr({
-        src:image.thumbnail,
-        alt:image.title
+function initModalImage(item){
+    $("#titleM").text(item.title);
+    $("#imgM").attr({
+        src:item.thumbnail,
+        alt:item.title
     });
-    $("#imageNbLikeM").text(image.nbLike);
-    if(image.isPublic)
-        $("select#imageVisibilityM").val("public");
+    if(item.nbLike != undefined){ /* AFFICHAGE DU NB DE LIKE SI IMAGE */ 
+        $("#nbLikeTitleM").show();
+        $("#nbLikeM").show();
+        $("#nbLikeM").text(item.nbLike);
+    }
+    else{
+        $("#nbLikeTitleM").hide();
+        $("#nbLikeM").hide();
+    }
+    if(item.isPublic)
+        $("select#visibilityM").val("public");
     else
-        $("select#imageVisibilityM").val("private");
-    $("#imageGaleriesM").append(addGaleriesCheckboxModal(galeries.items));
+        $("select#visibilityM").val("private");
 
-    if(image.size > 0){
-        $("#imageGaleriesM").show();
+    if(item.galeries != undefined && item.size > 0){
+        $("#galeriesM").show();
+        $("#galeriesM").append(addGaleriesCheckboxModal(galeries.items));
         var i;
-        for (i=0; i< image.size; ++i) /* check toutes les galeries ou l'image est deja presente */
-            $("#"+image.galeries.id+"Checkbox").prop('checked', true);
+        for (i=0; i< item.size; ++i) /* check toutes les galeries ou l'image est deja presente */
+            $("#"+item.galeries.id+"Checkbox").prop('checked', true);
     } else {
-        $("#imageGaleriesM").hide();
+        $("#galeriesM").hide();
     }
 }
 
@@ -303,49 +205,6 @@ function addGaleriesCheckboxModal(galeriesArray, size){
     }
     
     return html;
-}
-
-function getUrlParameter(sParam) {
-    var sPageURL = window.location.search.substring(1);
-    var sURLVariables = sPageURL.split('&');
-    for (var i = 0; i < sURLVariables.length; i++) {
-        var sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] == sParam) {
-            return sParameterName[1];
-        }
-    }
-
-    return "FAIL";
-}
-
-function prepareLoadingGif() {
-    $("#loading").hide();
-    $(document).ajaxStart(function() {
-        $("#loading").show();
-    });
-
-    $(document).ajaxStop(function() {
-        $("#loading").hide();
-    });
-
-}
-
-function ajaxEnterGalerie(cell) {
-    $.ajax({
-        url: 'php/controller/get_galleries_and_images.php',
-        type: 'POST',
-        data: 'id_gal=' + cell.data("id_galerie") + '&op=compteImg',
-        dataType: 'json',
-        success: function(data) {
-            contentGalerie = data;
-        },
-        complete: function(result, statut) {
-            enterGalerie(contentGalerie);
-        },
-        error: function(result, statut, erreur) {
-            alert("Echec du chargement de la galerie, erreur: " + erreur);
-        }
-    });
 }
 
 function ajaxGetModifyItem(item, operation) {
@@ -365,7 +224,7 @@ function ajaxGetModifyItem(item, operation) {
         complete: function(result, statut) {
             if(modififyItem.galeries != undefined){
                 initModalImage(modififyItem);
-                $("#imageWindowM").modal("toggle");
+                $("#windowM").modal("toggle");
             }
             else
                 alert("Modif des galeries pas encore implementée");
@@ -374,12 +233,6 @@ function ajaxGetModifyItem(item, operation) {
             alert("Echec du chargement des informations pour modification, erreur: " +
                 erreur);
         }
-    });
-}
-
-function enterClickBind() {
-    $(".cell").one("click", function(e) {
-        ajaxEnterGalerie($(this));
     });
 }
 
