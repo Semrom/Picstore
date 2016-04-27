@@ -26,47 +26,47 @@ var galeries = { /* variable qui stock toutes les galeries disponibles a affiche
     contentGalerie = { /*variable qui stock le contenue d'une galerie , a charger avec ajax avant de l'utiliser */
         "title": "Something",
         "items": [{
-            "id_img":0,
+            "id_img": 0,
             "title": "Lourdeur",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
-            "id_img":1,
+            "id_img": 1,
             "title": "Epic",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
-            "id_img":2,
+            "id_img": 2,
             "title": "MRW ta geule",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
-            "id_img":3,
+            "id_img": 3,
             "title": "Red",
             "link": "FatGuyShootingRed.gif",
             "thumbnail": "FatGuyShootingRed.gif"
         }, {
-            "id_img":4,
+            "id_img": 4,
             "title": "Blue",
             "link": "FatGuyShootingBlue.gif",
             "thumbnail": "FatGuyShootingBlue.gif"
         }, {
-            "id_img":5,
+            "id_img": 5,
             "title": "who",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
-            "id_img":6,
+            "id_img": 6,
             "title": "piouu",
             "link": "test2.jpg",
             "thumbnail": "test2.jpg"
         }, {
-            "id_img":7,
+            "id_img": 7,
             "title": ",piouu",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
         }, {
-            "id_img":8,
+            "id_img": 8,
             "title": "^_^",
             "link": "test.jpg",
             "thumbnail": "test.jpg"
@@ -74,16 +74,16 @@ var galeries = { /* variable qui stock toutes les galeries disponibles a affiche
         "size": 9
     },
     modififyItem = { //contenue de l'objet a modifier
-        "id":"id_1",
+        "id": "id_1",
         "title": "Titre",
         "nbLike": 45,
         "isPublic": true,
-        "thumbnail":"img/test.jpg",
+        "thumbnail": "img/test.jpg",
         "galeries": [{
-            "id_gal":0,
+            "id_gal": 0,
             "title": "galerie_1"
         }, {
-            "id_gal":0,
+            "id_gal": 0,
             "title": "galerie_2"
         }],
         "size": 2
@@ -102,3 +102,38 @@ function getUrlParameter(sParam) {
     return "FAIL";
 }
 
+function ajaxEnterGalerie(cell, operation) {
+    $.ajax({
+        url: 'php/controller/get_galleries_and_images.php',
+        type: 'POST',
+        data: 'id_gal=' + cell.data("id_galerie") + '&op=' + operation,
+        dataType: 'json',
+        success: function(data) {
+            contentGalerie = data;
+        },
+        complete: function(result, statut) {
+            enterGalerie(contentGalerie);
+        },
+        error: function(result, statut, erreur) {
+            alert("Echec du chargement de la galerie, erreur: " + erreur);
+        }
+    });
+}
+
+function enterClickBind(operation) {
+    $(".cell").one("click", function(e) {
+        ajaxEnterGalerie($(this), operation);
+    });
+}
+
+function prepareLoadingGif() {
+    $("#loading").hide();
+    $(document).ajaxStart(function() {
+        $("#loading").show();
+    });
+
+    $(document).ajaxStop(function() {
+        $("#loading").hide();
+    });
+
+}

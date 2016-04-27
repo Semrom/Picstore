@@ -102,7 +102,7 @@ function loadWall(contents) {
     for (var i = 0; i < contents.size; ++i) {
         if (contents == contentGalerie)
             html += "<a href='" + contents.items[i].link + "'>\n";
-        if(contents.items[i].id_galerie != undefined)
+        if (contents.items[i].id_galerie != undefined)
             html += addNewCell(contents.items[i].title, contents.items[i].thumbnail, wallConfig.width,
                 wallConfig.height, contents.items[i].id_galerie);
         else
@@ -145,40 +145,4 @@ function addNewCell(title, imgLink, width, height, id_galerie) {
         "px;background-image: url(./" + imgLink + ")'>\n" +
         "<div class='layer'>" + "<span class='desc'>" + title + "</span>" + "</div>\n</div>\n";
     return temp;
-}
-
-function ajaxEnterGalerie(cell, operation){
-    $.ajax({
-        url: 'php/controller/get_galleries_and_images.php',
-        type: 'POST',
-        data: 'id_gal=' + cell.data("id_galerie") + '&op='+operation,
-        dataType:'json',
-        success: function(data) {
-            contentGalerie = data;
-        },
-        complete: function(result, statut) {
-            enterGalerie(contentGalerie);
-        },
-        error: function(result, statut, erreur){
-            alert("Echec du chargement de la galerie, erreur: " + erreur);
-        }
-    });
-}
-
-function enterClickBind(operation) {
-    $(".cell").one("click", function(e) {
-        ajaxEnterGalerie($(this), operation);
-    });
-}
-
-function prepareLoadingGif() {
-    $("#loading").hide();
-    $(document).ajaxStart(function() {
-        $("#loading").show();
-    });
-
-    $(document).ajaxStop(function() {
-        $("#loading").hide();
-    });
-
 }

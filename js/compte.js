@@ -13,7 +13,7 @@ $(document).ready(function() {
             loadWall(galeries);
             enterClickBind("compteImg");
             modifiableClickBind();
-            $("#windowM").on('hidden.bs.modal',function(e){ 
+            $("#windowM").on('hidden.bs.modal', function(e) {
                 $("#galFormM").remove("label");
             });
         },
@@ -74,7 +74,7 @@ function enterGalerie(contents) {
         wall.refresh();
         wall.fitWidth();
         loadWall(contents);
-        $(document).ready(function(){
+        $(document).ready(function() {
             modifiableClickBind();
         });
     });
@@ -91,26 +91,21 @@ function enterGalerie(contents) {
  */
 function loadWall(contents) {
     var html = '';
-    var id_item = {
-        "id":-1,
-    }
+    var id_item;
 
     for (var i = 0; i < contents.size; ++i) {
         if (contents == contentGalerie)
             html += "<a href='" + contents.items[i].link + "'>\n";
 
-        if (contents.items[i].id_galerie != undefined){
-            id_item.id=contents.items[i].id_galerie;
+        if (contents.items[i].id_galerie != undefined) {
+            id_item = contents.items[i].id_galerie;
             html += addNewCell(contents.items[i].title, contents.items[i].thumbnail, wallConfig.width,
-                wallConfig.height, id_item,"galerie");
-        }
-        else{
-            id_item.id=contents.items[i].id_img;
+                wallConfig.height, id_item, "galerie");
+        } else {
+            id_item = contents.items[i].id_img;
             html += addNewCell(contents.items[i].title, contents.items[i].thumbnail, wallConfig.width,
-                wallConfig.height, id_item,"image");
+                wallConfig.height, id_item, "image");
         }
-
-
         if (contents == contentGalerie)
             html += "</a>\n"
     }
@@ -132,22 +127,12 @@ function loadWall(contents) {
     $(window).trigger("resize");
 }
 
-/*
- * addNewCell(imgLink, width, height)
- *
- * Cette fonction retourne une variable qui contient le code html d'une case qui compose la galerie.
- * On cree une case en donnant le lien vers le thumbnail/lien direct de l'image ainsi que les
- * dimensions de la case qui va etre crée.
- *
- * Return: le code html d'une case
- *
- */
 function addNewCell(title, imgLink, width, height, id_item, mode) {
     var temp = "<div class='cell' ";
     if (mode.localeCompare("galerie") == 0)
-        temp += "data-id_galerie='" + id_item.id + "'";
+        temp += "data-id_galerie='" + id_item + "'";
     else if (mode.localeCompare("image") == 0)
-        temp += "data-id_img='" + id_item.id+ "'";
+        temp += "data-id_img='" + id_item + "'";
     temp += " style='width:" + width + "px; height:" + height +
         "px;background-image: url(./" + imgLink + ")'>\n" +
         "<div class='layer'>" +
@@ -165,68 +150,66 @@ function addPlusCell(width, height) {
     return temp;
 }
 
-function initModalImage(item){
+function initModalImage(item) {
     $("#titleM").text(item.title);
     $("#imgM").attr({
-        src:item.thumbnail,
-        alt:item.title
+        src: item.thumbnail,
+        alt: item.title
     });
-    if(item.nbLike != undefined){ /* AFFICHAGE DU NB DE LIKE SI IMAGE */ 
+    if (item.nbLike != undefined) { /* AFFICHAGE DU NB DE LIKE SI IMAGE */
         $("#nbLikeTitleM").show();
         $("#nbLikeM").show();
         $("#nbLikeM").text(item.nbLike);
-    }
-    else{
+    } else {
         $("#nbLikeTitleM").hide();
         $("#nbLikeM").hide();
     }
-    if(item.isPublic)
+    if (item.isPublic)
         $("select#visibilityM").val("public");
     else
         $("select#visibilityM").val("private");
 
-    if(item.galeries != undefined && item.size > 0){
+    if (item.galeries != undefined && item.size > 0) {
         $("#galeriesM").show();
         $("#galeriesM").append(addGaleriesCheckboxModal(galeries.items));
         var i;
-        for (i=0; i< item.size; ++i) /* check toutes les galeries ou l'image est deja presente */
-            $("#"+item.galeries.id+"Checkbox").prop('checked', true);
+        for (i = 0; i < item.size; ++i) /* check toutes les galeries ou l'image est deja presente */
+            $("#" + item.galeries.id + "Checkbox").prop('checked', true);
     } else {
         $("#galeriesM").hide();
     }
 }
 
-function addGaleriesCheckboxModal(galeriesArray, size){
-    var i, html='';
-    for(i=0; i<size; ++i){
-        html+="<label class='checkbox-inline'>\n"
-            +"<input id='"+ galeriesArray.id_gal +"Checkbox' value='"+galeriesArray.id_gal+"' type='checkbox'>"
-            + galeriesArray.title + "</label>";
+function addGaleriesCheckboxModal(galeriesArray, size) {
+    var i, html = '';
+    for (i = 0; i < size; ++i) {
+        html += "<label class='checkbox-inline'>\n" + "<input id='" + galeriesArray.id_gal +
+            "Checkbox' value='" + galeriesArray.id_gal + "' type='checkbox'>" + galeriesArray.title +
+            "</label>";
     }
-    
+
     return html;
 }
 
 function ajaxGetModifyItem(item, operation) {
     var id_item;
-    if(operation == "modifGal")
-        id_item=item.data("id_galerie");
-    else 
-        id_item=item.data("id_img");
+    if (operation == "modifGal")
+        id_item = item.data("id_galerie");
+    else
+        id_item = item.data("id_img");
     $.ajax({
         url: 'php/controller/get_galleries_and_images.php',
         type: 'POST',
-        data: 'id='+id_item+'&op='+operation,
+        data: 'id=' + id_item + '&op=' + operation,
         dataType: 'json',
         success: function(data) {
             modififyItem = data;
         },
         complete: function(result, statut) {
-            if(modififyItem.galeries != undefined){
+            if (modififyItem.galeries != undefined) {
                 initModalImage(modififyItem);
                 $("#windowM").modal("toggle");
-            }
-            else
+            } else
                 alert("Modif des galeries pas encore implementée");
         },
         error: function(result, statut, erreur) {
@@ -238,9 +221,9 @@ function ajaxGetModifyItem(item, operation) {
 
 function modifiableClickBind() {
     $(".modifiable").on("click", function(e) {
-        if($(this).closest(".cell").data("id_galerie"))
+        if ($(this).closest(".cell").data("id_galerie"))
             ajaxGetModifyItem($(this).closest(".cell"), "modifGal");
-        else if($(this).closest(".cell").data("id_img"))
+        else if ($(this).closest(".cell").data("id_img"))
             ajaxGetModifyItem($(this).closest(".cell"), "modifImg");
         e.preventDefault();
     });
