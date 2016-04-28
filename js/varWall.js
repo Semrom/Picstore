@@ -89,6 +89,22 @@ var galeries = { /* variable qui stock toutes les galeries disponibles a affiche
         "size": 2
     };
 
+/*
+ * addControlBar()
+ *
+ * La fonction ajoute une barre de controle pour sortir de la galerie et revenir vers la liste de
+ * galeries
+ *
+ */
+function addControlBar() {
+    var htmlInsideAlbum =
+        "<button id='returnBtn' class='btn btn-default col-xs-3 col-sm-2 col-md-1' type='button'>Retour</button>";
+    $("#control-bar-album").prepend(htmlInsideAlbum);
+    $("#returnBtn").one("click", function() {
+        leaveGalerie(galeries);
+    });
+}
+
 function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1);
     var sURLVariables = sPageURL.split('&');
