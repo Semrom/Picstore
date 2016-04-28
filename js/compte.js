@@ -165,9 +165,9 @@ function initModalImage(item) {
         $("#nbLikeM").hide();
     }
     if (item.isPublic)
-        $("select#visibilityM").val("public");
+        $("#visibilityM").val("public");
     else
-        $("select#visibilityM").val("private");
+        $("#visibilityM").val("private");
 
     if (item.galeries != undefined && item.size > 0) {
         $("#galeriesM").show();
