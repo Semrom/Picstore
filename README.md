@@ -3,11 +3,11 @@ Ceci est un projet en groupe réalisé en 2016 à la faculté des sciences d'Aix
 
 Le projet est conçu dans le cadre des cours de développement web. L'objectif est de réaliser un site fonctionnant avec une base de données, un langage serveur et l'utilisation de requêtes Ajax.
 
-Les langages actuellement utilisés sont : HTML 5 / CSS 3 / PHP / MySQL / JavaScript / JQuery.
+Les langages utilisés sont : HTML 5 / CSS 3 / PHP / MySQL / JavaScript / JQuery.
 
 Notre site, Picstore, concerne un partage et hébergement d'images (animées ou non) entre utilisateurs. 
 
-Lien à venir prochainement.
+Voici le lien : http://picstore.16mb.com/
 
 Mes coéquipiers : ALLAM Thomas, SANCHEZ Arnaud, SOULIER Rémi
 
