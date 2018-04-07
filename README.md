@@ -7,8 +7,6 @@ Les langages utilisés sont : HTML 5 / CSS 3 / PHP / MySQL / JavaScript / JQuery
 
 Notre site, Picstore, concerne un partage et hébergement d'images (animées ou non) entre utilisateurs. 
 
-Voici le lien : http://picstore.16mb.com/
-
 Mes coéquipiers : ALLAM Thomas, SANCHEZ Arnaud, SOULIER Rémi
 
 Plus d'informations : http://semrom.fr/projets/picstore.php
