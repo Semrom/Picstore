@@ -3,7 +3,7 @@ Picstore est un projet en groupe réalisé en 2016 à la faculté des sciences d
 
 Le projet est conçu dans le cadre des cours de développement web. L'objectif est de réaliser un site fonctionnant avec une base de données, un langage serveur et l'utilisation de requêtes Ajax.
 
-Les langages utilisés sont : HTML 5 / CSS 3 / PHP / MySQL / JavaScript / JQuery.
+Les langages utilisés sont les suivants : HTML 5 / CSS 3 / PHP / MySQL / JavaScript / JQuery.
 
 Notre site, Picstore, concerne un hébergement et un partage d'images (animées ou non) entre utilisateurs. 
 
