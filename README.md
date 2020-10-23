@@ -9,6 +9,6 @@ Notre site, Picstore, concerne un hébergement et un partage d'images (animées 
 
 Mes coéquipiers : ALLAM Thomas, SANCHEZ Arnaud, SOULIER Rémi
 
-Plus d'informations : https://semrom.fr/projets/picstore.php
+Plus d'informations : https://romain-semler.fr/projets/picstore.php
 
 Romain Semler ©2016
